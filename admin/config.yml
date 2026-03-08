@@ -2,7 +2,7 @@ backend:
   name: github
   repo: mikeyriddell-ux/hear-and-now
   branch: main
-  base_url: https://decap-cms-proxy-backend.vercel.app
+  base_url: https://decap-cms-proxy.vercel.app
   auth_endpoint: api/auth
 
 local_backend: true
