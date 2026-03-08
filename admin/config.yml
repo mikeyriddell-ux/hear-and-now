@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: mikeyriddell-ux/hear-and-now
+  branch: main
+
+local_backend: true
+
+media_folder: "public/assets/artists"
+public_folder: "/assets/artists"
+
+collections:
+  - name: "artists"
+    label: "Artists"
+    folder: "src/content/artists"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Genre", name: "genre", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Zoom Scale", name: "zoomScale", widget: "string", default: "1.2" }
+      - { label: "Object Position", name: "objectPosition", widget: "string", default: "50% 25%" }
