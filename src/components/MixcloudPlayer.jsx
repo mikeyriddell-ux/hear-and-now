@@ -95,7 +95,7 @@ export default function MixcloudPlayer() {
                             <Activity className="absolute -top-1 -right-1 w-3 h-3 text-accent" />
                         </div>
                         <div className="text-left">
-                            <span className="font-mono text-[10px] text-accent uppercase tracking-widest block mb-1">Live Archive</span>
+                            <span className="font-mono text-[10px] text-accent uppercase tracking-widest block mb-1">Live Broadcast</span>
                             <h4 className="font-sans text-xs md:text-sm font-bold text-white leading-none line-clamp-1">{currentSet.name}</h4>
                         </div>
                     </div>

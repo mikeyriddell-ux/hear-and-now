@@ -1,7 +1,5 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X } from 'lucide-react';
+import siteConfig from '../content/settings/site.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,12 +53,12 @@ export default function Navbar() {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <div ref={containerRef} className="fixed top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
+        <div ref={containerRef} className="fixed top-6 md:top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
             {/* Logo positioned top-left outside the navbar, using NYC subway CSS typography */}
-            <div className="absolute top-0 left-8 pointer-events-auto">
+            <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-8 pointer-events-auto flex items-center">
                 <a href="/" className="block group">
                     <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-background leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl [&.scrolled-nav_h1]:text-primary">
-                        HEAR & NOW
+                        {siteConfig.name}
                     </h1>
                 </a>
             </div>
@@ -78,19 +76,22 @@ export default function Navbar() {
         "
             >
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-12 text-base font-semibold tracking-wide">
+                <div className="hidden md:flex items-center gap-12 text-base font-semibold tracking-wide mr-8">
                     <a href="/" className="text-accent hover:-translate-y-[1px] transition-transform relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-accent">Home</a>
                     <a href="#listen" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Listen Live</a>
                     <a href="#archives" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Broadcasts</a>
-                    <a href="#community" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Community</a>
+                    <a href="#events" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Events</a>
+                </div>
+
+                <div className="hidden md:block">
+                    <button className="magnetic-btn bg-accent text-primary px-8 py-3.5 rounded-full font-sans font-bold text-sm shadow-xl hover:shadow-accent/20 transition-shadow">
+                        <span>Subscribe</span>
+                    </button>
                 </div>
             </nav>
 
             {/* Top Right Actions: Subscribe (Desktop) + Burger (Mobile) */}
-            <div className="absolute top-0 right-8 pointer-events-auto flex items-center gap-4">
-                <button className="magnetic-btn bg-accent text-primary px-8 py-4 rounded-full font-sans font-bold text-base shadow-xl hover:shadow-accent/20 transition-shadow hidden sm:block">
-                    <span>Subscribe</span>
-                </button>
+            <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 right-8 pointer-events-auto flex items-center">
 
                 <button
                     onClick={toggleMenu}
@@ -115,7 +116,7 @@ export default function Navbar() {
                     <a href="/" onClick={toggleMenu} className="mobile-nav-link text-accent">Home</a>
                     <a href="#listen" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Listen Live</a>
                     <a href="#archives" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Broadcasts</a>
-                    <a href="#community" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Community</a>
+                    <a href="#events" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Events</a>
                     <button className="mobile-nav-link mt-4 bg-accent text-primary px-10 py-5 rounded-full text-xl font-bold">
                         Subscribe
                     </button>

@@ -3,40 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { User, Music, Zap } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const artists = [
-    {
-        name: "Mike Riddell",
-        role: "The Selector",
-        genre: "Deep / Melodic House",
-        image: "/src/assets/mike-riddell.jpg",
-        imgStyle: { scale: "3.2", objectPosition: "50% 12%" },
-        bio: "Maestro of the long-form narrative. culptor of sonic spaces that transcend the dancefloor."
-    },
-    {
-        name: "Angus Patterson",
-        role: "The Icon",
-        genre: "Classic House / Acid",
-        image: "/src/assets/angus-patterson.jpg",
-        imgStyle: { scale: "1.5", objectPosition: "50% 45%" },
-        bio: "A bridge between fashion and frequencies. Honey brings the raw energy of Chicago to the world's most elite stages."
-    },
-    {
-        name: "Ali Gudgeon",
-        role: "The Resident",
-        genre: "Pure Techno",
-        image: "/src/assets/ali-gudgeon.jpg",
-        bio: "His sets are a study in precision, endurance, and the transformative power of the kick drum."
-    },
-    {
-        name: "Isaac Buckton",
-        role: "The Catalyst",
-        genre: "Acid Techno",
-        image: "/src/assets/isaac-buckton.jpg",
-        bio: "High-octane energy meets surgical execution. Isaac has redefined the intensity of the modern techno experience."
-    }
-];
+const artistModules = import.meta.glob('../content/artists/*.json', { eager: true });
+const artists = Object.values(artistModules).map(mod => mod.default || mod);
 
 export default function Artists() {
     const sectionRef = useRef(null);
@@ -92,10 +60,13 @@ export default function Artists() {
                         >
                             <div className="aspect-[4/5] overflow-hidden relative">
                                 <img
-                                    src={artist.image}
+                                    src={artist.image.startsWith('/') ? `${import.meta.env.BASE_URL}${artist.image.slice(1)}` : artist.image}
                                     alt={artist.name}
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0"
-                                    style={artist.imgStyle}
+                                    style={{
+                                        scale: artist.zoomScale || "1.2",
+                                        objectPosition: artist.objectPosition || "50% 25%"
+                                    }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 

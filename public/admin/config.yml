@@ -1,0 +1,61 @@
+backend:
+  name: github
+  repo: mikeyriddell-ux/hear-and-now
+  branch: main
+  base_url: https://vercel-dms089h7p-mikeyriddell-uxs-projects.vercel.app
+  auth_endpoint: api/auth
+
+local_backend: true
+
+media_folder: "public/assets/artists"
+public_folder: "/assets/artists"
+
+collections:
+  - name: "artists"
+    label: "Artists"
+    folder: "src/content/artists"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Genre", name: "genre", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Zoom Scale", name: "zoomScale", widget: "string", default: "1.2" }
+      - { label: "Object Position", name: "objectPosition", widget: "string", default: "50% 25%" }
+
+  - name: "settings"
+    label: "Settings"
+    delete: false
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "src/content/settings/hero.json"
+        fields:
+          - { label: "Title Line 1", name: "titleLine1", widget: "string" }
+          - { label: "Title Line 2", name: "titleLine2", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Hero Image", name: "image", widget: "image" }
+
+      - name: "site"
+        label: "Site Identity"
+        file: "src/content/settings/site.json"
+        fields:
+          - { label: "Site Name", name: "name", widget: "string" }
+          - { label: "Footer Tagline", name: "tagline", widget: "text" }
+          - { label: "Hero Footer Text", name: "footerText", widget: "string" }
+
+  - name: "broadcasts"
+    label: "Broadcasts"
+    folder: "src/content/broadcasts"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Mixcloud URL", name: "url", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }

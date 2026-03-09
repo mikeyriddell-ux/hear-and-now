@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Artists from './components/Artists';
-import GetStarted from './components/GetStarted';
 import Footer from './components/Footer';
 import MixcloudPlayer from './components/MixcloudPlayer';
 
@@ -28,10 +27,9 @@ export default function App() {
                 <Hero />
                 <Features />
                 <Artists />
-                <GetStarted />
             </main>
             <Footer />
-            <MixcloudPlayer />
+            {/* <MixcloudPlayer /> */}
         </div>
     );
 }

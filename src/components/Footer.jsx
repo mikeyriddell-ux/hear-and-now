@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radio } from 'lucide-react';
+import siteConfig from '../content/settings/site.json';
 
 export default function Footer() {
     return (
@@ -8,19 +9,19 @@ export default function Footer() {
                 <div className="md:col-span-2">
                     <div className="flex items-center gap-2 font-sans font-bold tracking-tight text-xl mb-4 text-white">
                         <Radio size={24} className="text-accent" />
-                        <span>Hear & Now</span>
+                        <span>{siteConfig.name}</span>
                     </div>
                     <p className="font-mono text-sm text-background/60 max-w-xs">
-                        Aural curation meets absolute frequency. Radical music discovery via global signals.
+                        {siteConfig.tagline}
                     </p>
                 </div>
-
+                {/* ... existing links ... */}
                 <div>
                     <h4 className="font-sans font-bold mb-4 text-white">Nav</h4>
                     <ul className="flex flex-col gap-3 font-mono text-sm text-background/60">
                         <li><a href="#" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Listen Live</a></li>
-                        <li><a href="#" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Archive</a></li>
-                        <li><a href="#" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Community</a></li>
+                        <li><a href="#archives" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Broadcasts</a></li>
+                        <li><a href="#events" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Events</a></li>
                     </ul>
                 </div>
 
@@ -36,7 +37,7 @@ export default function Footer() {
 
             <div className="max-w-7xl mx-auto pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="font-mono text-xs text-background/40">
-                    © {new Date().getFullYear()} Hear & Now. All rights reserved.
+                    © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
                 </div>
 
                 <div className="flex items-center gap-2 bg-background/5 px-4 py-2 rounded-full border border-background/10">
