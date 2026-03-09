@@ -40,6 +40,14 @@ collections:
           - { label: "Tagline", name: "tagline", widget: "string" }
           - { label: "Hero Image", name: "image", widget: "image" }
 
+      - name: "site"
+        label: "Site Identity"
+        file: "src/content/settings/site.json"
+        fields:
+          - { label: "Site Name", name: "name", widget: "string" }
+          - { label: "Footer Tagline", name: "tagline", widget: "text" }
+          - { label: "Hero Footer Text", name: "footerText", widget: "string" }
+
   - name: "broadcasts"
     label: "Broadcasts"
     folder: "src/content/broadcasts"
