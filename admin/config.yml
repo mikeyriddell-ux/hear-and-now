@@ -2,13 +2,13 @@ backend:
   name: github
   repo: mikeyriddell-ux/hear-and-now
   branch: main
-  base_url: https://vercel-dms089h7p-mikeyriddell-uxs-projects.vercel.app
+  base_url: https://mikeyriddell-ux.github.io/hear-and-now/
   auth_endpoint: api/auth
 
 local_backend: true
 
 media_folder: "public/assets/artists"
-public_folder: "/assets/artists"
+public_folder: "assets/artists"
 
 collections:
   - name: "artists"
