@@ -10,6 +10,14 @@ export default function Artists() {
     const sectionRef = useRef(null);
     const headingRef = useRef(null);
 
+    const resolveImagePath = (path) => {
+        if (!path) return '';
+        if (import.meta.env.DEV && path.startsWith('/hear-and-now')) {
+            return path.replace('/hear-and-now', '');
+        }
+        return path;
+    };
+
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // Heading Animation
@@ -60,7 +68,7 @@ export default function Artists() {
                         >
                             <div className="aspect-[4/5] overflow-hidden relative">
                                 <img
-                                    src={artist.image.startsWith('/') ? `${import.meta.env.BASE_URL}${artist.image.slice(1)}` : artist.image}
+                                    src={resolveImagePath(artist.image)}
                                     alt={artist.name}
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0"
                                     style={{

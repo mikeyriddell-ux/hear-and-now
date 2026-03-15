@@ -1,5 +1,8 @@
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import siteConfig from '../content/settings/site.json';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
