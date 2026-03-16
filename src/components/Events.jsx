@@ -61,7 +61,7 @@ export default function Events() {
             <div className="max-w-7xl mx-auto relative z-10">
                 <div ref={headingRef} className="mb-20">
                     <span className="font-mono text-accent tracking-[0.3em] uppercase text-xs mb-6 block font-bold">In-Person Signal</span>
-                    <h2 className="font-sans text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.9]">
+                    <h2 className="font-sans text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9]">
                         Upcoming <br />
                         <span className="font-drama italic text-accent normal-case tracking-normal">Gatherings</span>
                     </h2>
