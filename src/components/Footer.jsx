@@ -21,6 +21,7 @@ export default function Footer() {
                     <ul className="flex flex-col gap-3 font-mono text-sm text-background/60">
                         <li><a href="#" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Listen Live</a></li>
                         <li><a href="#latest-shows" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Latest Shows</a></li>
+                        <li><a href="#selectors" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Selectors</a></li>
                         <li><a href="#events" className="hover:text-accent transition-colors hover:translate-x-1 block duration-300">Events</a></li>
                     </ul>
                 </div>

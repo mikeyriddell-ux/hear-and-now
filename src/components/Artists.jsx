@@ -50,7 +50,7 @@ export default function Artists() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-32 px-6 md:px-12 bg-primary overflow-hidden">
+        <section id="selectors" ref={sectionRef} className="py-32 px-6 md:px-12 bg-primary overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div ref={headingRef} className="mb-20">
                     <span className="font-mono text-accent tracking-widest uppercase text-sm mb-4 block">Current Selectors</span>
