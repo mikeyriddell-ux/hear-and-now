@@ -68,8 +68,8 @@ export default function Navbar({ isLive }) {
         <div ref={containerRef} className="fixed top-6 md:top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
             {/* Logo positioned top-left outside the navbar, using NYC subway CSS typography */}
             <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-8 md:left-16 pointer-events-auto flex items-center">
-                <a href="#" onClick={scrollToTop} className="block group">
-                    <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-background leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl [.scrolled-nav_&]:text-primary">
+                <a href="#" onClick={scrollToTop} className="block group px-4 py-2 -ml-4 rounded-[12px] transition-all duration-500 [.scrolled-nav_&]:bg-black [.scrolled-nav_&]:shadow-2xl">
+                    <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-white leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl">
                         {siteConfig.name}
                     </h1>
                 </a>
