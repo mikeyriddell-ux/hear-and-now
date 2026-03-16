@@ -63,7 +63,6 @@ collections:
         fields:
           - { label: "Title Line 1", name: "titleLine1", widget: "string" }
           - { label: "Title Line 2", name: "titleLine2", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
           - { label: "Hero Image", name: "image", widget: "image" }
 
       - name: "site"
