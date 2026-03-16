@@ -49,7 +49,7 @@ collections:
       - { label: "Role", name: "role", widget: "string" }
       - { label: "Genre", name: "genre", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Bio", name: "bio", widget: "text", pattern: [".{0,150}", "Must be 150 characters or less (about 3 lines)"], hint: "Keep it brief — max 150 characters for clean UI." }
       - { label: "Zoom Scale", name: "zoomScale", widget: "string", default: "1.2" }
       - { label: "Object Position", name: "objectPosition", widget: "string", default: "50% 25%" }
 

@@ -88,7 +88,7 @@ export default function Artists() {
                             <div className="p-8 relative">
                                 <span className="font-mono text-xs text-accent/60 uppercase tracking-widest mb-2 block">{artist.role}</span>
                                 <h3 className="font-sans text-2xl font-bold text-white mb-2">{artist.name}</h3>
-                                <p className="font-sans text-sm text-background/60 leading-relaxed mb-6 h-12 overflow-hidden text-ellipsis line-clamp-2">
+                                <p className="font-sans text-sm text-background/60 leading-relaxed mb-6 line-clamp-3 min-h-[4.5em]">
                                     {artist.bio}
                                 </p>
 
