@@ -11,7 +11,7 @@ const broadcasts = Object.values(broadcastModules)
 
 export default function Features() {
     return (
-        <section id="archives" className="py-24 px-6 md:px-16 w-full max-w-[1400px] mx-auto z-10 relative">
+        <section id="latest-shows" className="py-24 px-6 md:px-16 w-full max-w-[1400px] mx-auto z-10 relative">
 
             <div className="flex justify-between items-end mb-12">
                 <div>
