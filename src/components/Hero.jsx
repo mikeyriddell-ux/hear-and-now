@@ -33,7 +33,7 @@ export default function Hero({ isLive }) {
         : heroContent.image;
 
     return (
-        <section ref={comp} className="relative h-[75dvh] md:h-[100dvh] w-full flex items-end pb-12 md:pb-24 px-6 md:px-16 overflow-hidden">
+        <section ref={comp} className="relative h-[75dvh] md:h-[100dvh] w-full flex items-end pb-12 md:pb-[296px] px-6 md:px-16 overflow-hidden">
             {/* Background Image: Managed via CMS */}
             <div
                 className="absolute inset-0 z-0 bg-cover bg-center"
