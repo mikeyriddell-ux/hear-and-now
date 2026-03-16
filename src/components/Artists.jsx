@@ -4,7 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { User, Music, Zap } from 'lucide-react';
 
 const artistModules = import.meta.glob('../content/artists/*.json', { eager: true });
-const artists = Object.values(artistModules).map(mod => mod.default || mod);
+const artists = Object.values(artistModules)
+    .map(mod => mod.default || mod)
+    .filter(artist => artist.enabled !== false);
 
 export default function Artists() {
     const sectionRef = useRef(null);
