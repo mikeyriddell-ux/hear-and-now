@@ -90,7 +90,7 @@ export default function Navbar({ isLive }) {
             >
                 {/* Desktop Nav Links */}
                 <div className="flex items-center gap-8 text-sm font-bold tracking-widest uppercase">
-                    <a href="#archives" className="hover:text-accent hover:-translate-y-[1px] transition-all opacity-80 hover:opacity-100">Broadcasts</a>
+                    <a href="#archives" className="hover:text-accent hover:-translate-y-[1px] transition-all opacity-80 hover:opacity-100">Latest Shows</a>
                     <a href="#events" className="hover:text-accent hover:-translate-y-[1px] transition-all opacity-80 hover:opacity-100">Events</a>
                 </div>
 
@@ -133,7 +133,7 @@ export default function Navbar({ isLive }) {
                 </div>
                 <div className="flex flex-col items-center gap-8 text-3xl font-bold tracking-tighter">
                     {/* Home Link Hidden from Mobile Nav */}
-                    <a href="#archives" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Broadcasts</a>
+                    <a href="#archives" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Latest Shows</a>
                     <a href="#events" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Events</a>
 
                     {isLive && (

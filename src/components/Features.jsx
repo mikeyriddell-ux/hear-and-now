@@ -15,7 +15,7 @@ export default function Features() {
 
             <div className="flex justify-between items-end mb-12">
                 <div>
-                    <h2 className="font-sans font-bold text-4xl md:text-5xl text-background mb-4">Broadcasts</h2>
+                    <h2 className="font-sans font-bold text-4xl md:text-5xl text-background mb-4">Latest Shows</h2>
                     <p className="font-mono text-sm text-background/60 flex items-center gap-2">
                         <Circle size={8} className="text-accent animate-pulse" fill="currentColor" />
                         Live recordings from Forestry Transmission
