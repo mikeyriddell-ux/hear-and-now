@@ -6,11 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager | Hear & Now</title>
     <link href="config.yml" type="text/yaml" rel="cms-config-url">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+        :root {
+            --obsidian: #0D0D12;
+            --champagne: #C9A84C;
+            --ivory: #FAF8F5;
+            --slate: #2A2A35;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
+    <!-- Scripts for animations -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
-
 </html>

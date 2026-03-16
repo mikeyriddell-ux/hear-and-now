@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import siteConfig from '../content/settings/site.json';
 import gsap from 'gsap';
@@ -6,11 +6,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Navbar() {
+export default function Navbar({ isLive }) {
     const navRef = useRef(null);
+    const rightActionsRef = useRef(null);
     const containerRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
+
+    const scrollToTop = (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -19,7 +28,7 @@ export default function Navbar() {
                 end: 99999,
                 toggleClass: {
                     className: 'scrolled-nav',
-                    targets: navRef.current,
+                    targets: containerRef.current,
                 },
             });
         }, containerRef);
@@ -59,46 +68,53 @@ export default function Navbar() {
         <div ref={containerRef} className="fixed top-6 md:top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
             {/* Logo positioned top-left outside the navbar, using NYC subway CSS typography */}
             <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-8 pointer-events-auto flex items-center">
-                <a href="/" className="block group">
-                    <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-background leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl [&.scrolled-nav_h1]:text-primary">
+                <a href="#" onClick={scrollToTop} className="block group">
+                    <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-background leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl [.scrolled-nav_&]:text-primary">
                         {siteConfig.name}
                     </h1>
                 </a>
             </div>
 
+            {/* Desktop Nav - Pill shape, right-aligned content */}
             <nav
                 ref={navRef}
                 className="
           pointer-events-auto
-          hidden md:flex items-center justify-center
-          px-6 md:px-12 py-4 md:py-5 rounded-[2rem] md:rounded-[2.5rem]
+          hidden md:flex items-center justify-end
+          px-8 py-4 md:py-5 rounded-[2rem] md:rounded-[2.5rem]
           transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
           bg-transparent text-background border border-transparent
-          [&.scrolled-nav]:bg-background/80 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:border-primary/10 [&.scrolled-nav]:shadow-2xl
-          w-auto max-w-4xl mx-auto gap-8 md:gap-12
+          [.scrolled-nav_&]:bg-background/80 [.scrolled-nav_&]:backdrop-blur-xl [.scrolled-nav_&]:text-primary [.scrolled-nav_&]:border-primary/10 [.scrolled-nav_&]:shadow-2xl
+          w-auto max-w-5xl ml-auto mr-8 gap-8 md:gap-12
         "
             >
-                {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-12 text-base font-semibold tracking-wide mr-8">
-                    <a href="/" className="text-accent hover:-translate-y-[1px] transition-transform relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-accent">Home</a>
-                    <a href="#listen" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Listen Live</a>
-                    <a href="#archives" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Broadcasts</a>
-                    <a href="#events" className="hover:-translate-y-[1px] transition-transform opacity-80 hover:opacity-100">Events</a>
+                {/* Desktop Nav Links */}
+                <div className="flex items-center gap-8 text-sm font-bold tracking-widest uppercase">
+                    <a href="#archives" className="hover:text-accent hover:-translate-y-[1px] transition-all opacity-80 hover:opacity-100">Broadcasts</a>
+                    <a href="#events" className="hover:text-accent hover:-translate-y-[1px] transition-all opacity-80 hover:opacity-100">Events</a>
                 </div>
 
-                <div className="hidden md:block">
-                    <button className="magnetic-btn bg-accent text-primary px-8 py-3.5 rounded-full font-sans font-bold text-sm shadow-xl hover:shadow-accent/20 transition-shadow">
-                        <span>Subscribe</span>
-                    </button>
-                </div>
+                {isLive && (
+                    <a
+                        href="https://www.mixcloud.com/live/forestrytransmission/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-red-600 text-white px-8 py-3.5 rounded-full font-sans font-bold text-sm shadow-xl hover:shadow-red-500/20 hover:scale-[1.03] active:scale-95 transition-all inline-flex items-center group cursor-pointer"
+                    >
+                        <span>Listen Live</span>
+                        <span className="w-2 h-2 rounded-full bg-white ml-3 animate-pulse"></span>
+                    </a>
+                )}
             </nav>
 
-            {/* Top Right Actions: Subscribe (Desktop) + Burger (Mobile) */}
-            <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 right-8 pointer-events-auto flex items-center">
-
+            {/* Top Right Actions: Burger (Mobile Only now) */}
+            <div
+                ref={rightActionsRef}
+                className="absolute top-6 md:top-1/2 md:-translate-y-1/2 right-8 pointer-events-auto flex items-center md:hidden transition-all duration-500 [.scrolled-nav_&]:text-primary"
+            >
                 <button
                     onClick={toggleMenu}
-                    className="md:hidden flex items-center justify-center w-14 h-14 rounded-full bg-background/80 backdrop-blur-xl text-primary border border-primary/10 shadow-xl transition-transform active:scale-95"
+                    className="flex items-center justify-center w-14 h-14 rounded-full bg-background/80 backdrop-blur-xl text-primary border border-primary/10 shadow-xl transition-transform active:scale-95"
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
@@ -116,13 +132,21 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div className="flex flex-col items-center gap-8 text-3xl font-bold tracking-tighter">
-                    <a href="/" onClick={toggleMenu} className="mobile-nav-link text-accent">Home</a>
-                    <a href="#listen" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Listen Live</a>
+                    {/* Home Link Hidden from Mobile Nav */}
                     <a href="#archives" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Broadcasts</a>
                     <a href="#events" onClick={toggleMenu} className="mobile-nav-link text-background hover:text-accent transition-colors">Events</a>
-                    <button className="mobile-nav-link mt-4 bg-accent text-primary px-10 py-5 rounded-full text-xl font-bold">
-                        Subscribe
-                    </button>
+
+                    {isLive && (
+                        <a
+                            href="https://www.mixcloud.com/live/forestrytransmission/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mobile-nav-link mt-4 bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold flex items-center shadow-2xl"
+                        >
+                            Listen Live
+                            <span className="w-3 h-3 rounded-full bg-white ml-4 animate-pulse"></span>
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

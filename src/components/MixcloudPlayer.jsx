@@ -3,8 +3,8 @@ import gsap from 'gsap';
 import { Radio, ChevronUp, ChevronDown, Activity } from 'lucide-react';
 
 const archives = [
-    { name: "Bump & Hustle live from the Collab", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/bump-hustle-live-from-the-collab-271121-20211127-193611/" },
-    { name: "Heavy Vibes live from The Collab", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/heavy-vibes-live-from-the-collab-291021/" },
+    { name: "Bump & Hustle live from 56 St James Street", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/bump-hustle-live-from-the-collab-271121-20211127-193611/" },
+    { name: "Heavy Vibes live from 56 St James Street", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/heavy-vibes-live-from-the-collab-291021/" },
     { name: "Heavy Vibes (Oct 2021)", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/heavy-vibes-20211008-182158/" },
     { name: "Easy Does It - 26/09/21 - PART 2", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/easy-does-it-260921-20210926-095618/" },
     { name: "Easy Does It - 26/09/21", url: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&autoplay=1&feed=/forestrytransmission/easy-does-it-260921-20210926-083121/" },
@@ -64,14 +64,16 @@ export default function MixcloudPlayer() {
                 height: "auto",
                 opacity: 1,
                 duration: 0.6,
-                ease: "power3.inOut"
+                ease: "power3.inOut",
+                onComplete: () => ScrollTrigger.refresh()
             });
         } else {
             gsap.to(contentRef.current, {
                 height: 0,
                 opacity: 0,
                 duration: 0.5,
-                ease: "power3.inOut"
+                ease: "power3.inOut",
+                onComplete: () => ScrollTrigger.refresh()
             });
         }
     }, [isExpanded, isConnected]);

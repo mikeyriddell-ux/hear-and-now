@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { Play } from 'lucide-react';
 import heroContent from '../content/settings/hero.json';
 
-export default function Hero() {
+export default function Hero({ isLive }) {
     const comp = useRef(null);
 
     useLayoutEffect(() => {
@@ -55,6 +55,21 @@ export default function Hero() {
                 <p className="hero-text text-background/80 font-mono max-w-md text-sm md:text-base uppercase tracking-wider">
                     {heroContent.tagline}
                 </p>
+
+                {/* Mobile-only Listen Live Button */}
+                {isLive && (
+                    <div className="md:hidden animate-fade-in">
+                        <a
+                            href="https://www.mixcloud.com/live/forestrytransmission/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-red-600 text-white px-8 py-4 rounded-full font-sans font-bold text-lg shadow-2xl inline-flex items-center gap-3 active:scale-95 transition-transform"
+                        >
+                            <span>Listen Live</span>
+                            <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                        </a>
+                    </div>
+                )}
             </div>
         </section>
     );
