@@ -85,3 +85,21 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Mixcloud URL", name: "url", widget: "string" }
       - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "string", hint: "e.g., Every 2nd & 4th Friday" }
+      - { label: "Time", name: "time", widget: "string", hint: "e.g., 20:00 - Late" }
+      - { label: "Location", name: "location", widget: "string", hint: "Full address" }
+      - { label: "Venue", name: "venue", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "CTA Label", name: "cta", widget: "string", default: "Sign Up" }
+      - { label: "CTA Link", name: "ctaLink", widget: "string" }
