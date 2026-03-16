@@ -47,7 +47,7 @@ export default function Hero({ isLive }) {
                     <span className="hero-text font-sans font-bold text-4xl md:text-6xl tracking-tight text-background">
                         {heroContent.titleLine1}
                     </span>
-                    <span className="hero-text font-subway text-6xl md:text-8xl text-accent lg:text-[10rem] leading-none md:whitespace-nowrap">
+                    <span className="hero-text font-drama italic text-accent text-7xl md:text-9xl lg:text-[13rem] leading-[0.8] md:whitespace-nowrap normal-case tracking-normal">
                         {heroContent.titleLine2}
                     </span>
                 </h1>
