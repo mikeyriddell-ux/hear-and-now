@@ -104,3 +104,17 @@ collections:
       - { label: "CTA Label", name: "cta", widget: "string", default: "Sign Up" }
       - { label: "CTA Link", name: "ctaLink", widget: "string" }
       - { label: "Enabled", name: "enabled", widget: "boolean", default: true, hint: "Turn off to hide this event from the live site" }
+
+  - name: "upcoming_shows"
+    label: "Upcoming Shows"
+    folder: "src/content/upcoming-shows"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Selector Name", name: "selector", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Time", name: "time", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
+      - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
