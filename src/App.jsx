@@ -8,6 +8,7 @@ import Artists from './components/Artists';
 import Events from './components/Events';
 import Footer from './components/Footer';
 import MixcloudPlayer from './components/MixcloudPlayer';
+import UpcomingShows from './components/UpcomingShows';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +72,7 @@ export default function App() {
             <Navbar isLive={isLive} />
             <main>
                 <Hero isLive={isLive} />
+                <UpcomingShows />
                 <Features />
                 <Events />
                 <Artists />
