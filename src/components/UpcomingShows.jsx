@@ -14,9 +14,6 @@ export default function UpcomingShows() {
 
     const resolveImagePath = (path) => {
         if (!path) return '';
-        if (import.meta.env.DEV && path.startsWith('/hear-and-now')) {
-            return path.replace('/hear-and-now', '');
-        }
         return path;
     };
 

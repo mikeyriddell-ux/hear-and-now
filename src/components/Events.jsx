@@ -14,10 +14,7 @@ export default function Events() {
 
     const resolveImagePath = (path) => {
         if (!path) return '';
-        if (path.startsWith('http')) return path;
-        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-        const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
-        return `${base}${normalizedPath}`.replace(/\/+/g, '/');
+        return path;
     };
 
     useLayoutEffect(() => {
