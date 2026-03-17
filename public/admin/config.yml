@@ -116,6 +116,6 @@ collections:
       - { label: "Selector Name", name: "selector", widget: "string" }
       - { label: "Date", name: "date", widget: "string" }
       - { label: "Time", name: "time", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
+
       - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
       - { label: "Enabled", name: "enabled", widget: "boolean", default: true }

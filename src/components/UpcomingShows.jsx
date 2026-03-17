@@ -63,10 +63,10 @@ export default function UpcomingShows() {
                         key={idx}
                         className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-500 shadow-xl flex"
                     >
-                        {show.image && (
+                        {artistMatch?.image && (
                             <div className="w-1/3 min-w-[120px] md:min-w-[160px] aspect-square flex-shrink-0">
                                 <img
-                                    src={resolveImagePath(show.image)}
+                                    src={resolveImagePath(artistMatch.image)}
                                     alt={show.selector}
                                     className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                                 />
