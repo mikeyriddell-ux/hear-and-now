@@ -12,6 +12,14 @@ const upcomingShows = Object.values(showModules)
 export default function UpcomingShows() {
     const sectionRef = useRef(null);
 
+    const resolveImagePath = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path;
+        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+        const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+        return `${base}${normalizedPath}`.replace(/\/+/g, '/');
+    };
+
     useLayoutEffect(() => {
         if (upcomingShows.length === 0) return;
 
@@ -50,21 +58,32 @@ export default function UpcomingShows() {
                 {upcomingShows.map((show, idx) => (
                     <div
                         key={idx}
-                        className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl p-8 hover:border-accent/50 transition-colors duration-500 shadow-xl flex flex-col justify-center"
+                        className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-500 shadow-xl flex"
                     >
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest bg-accent px-3 py-1 rounded-full font-bold">
-                                <Calendar size={12} />
-                                {show.date}
+                        {show.image && (
+                            <div className="w-1/3 min-w-[120px] md:min-w-[160px] aspect-square flex-shrink-0">
+                                <img
+                                    src={resolveImagePath(show.image)}
+                                    alt={show.selector}
+                                    className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                />
                             </div>
-                            <div className="flex items-center gap-2 text-background/60 font-mono text-xs uppercase tracking-widest border-l border-primary/20 pl-4">
-                                <Clock size={12} />
-                                {show.time}
+                        )}
+                        <div className="p-6 md:p-8 flex flex-col justify-center flex-grow">
+                            <div className="flex flex-wrap items-center gap-3 mb-4">
+                                <div className="flex items-center gap-2 text-primary font-mono text-[10px] md:text-xs uppercase tracking-widest bg-accent px-3 py-1 rounded-full font-bold whitespace-nowrap">
+                                    <Calendar size={12} />
+                                    {show.date}
+                                </div>
+                                <div className="flex items-center gap-2 text-background/60 font-mono text-[10px] md:text-xs uppercase tracking-widest border-l border-primary/20 pl-3 whitespace-nowrap">
+                                    <Clock size={12} />
+                                    {show.time}
+                                </div>
                             </div>
+                            <h3 className="font-sans text-2xl md:text-3xl font-bold text-background group-hover:text-accent transition-colors">
+                                {show.selector}
+                            </h3>
                         </div>
-                        <h3 className="font-sans text-3xl font-bold text-background group-hover:text-accent transition-colors">
-                            {show.selector}
-                        </h3>
                     </div>
                 ))}
             </div>
