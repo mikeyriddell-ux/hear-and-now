@@ -74,16 +74,16 @@ export default function UpcomingShows() {
                         )}
                         <div className="p-6 md:p-8 flex flex-col justify-center flex-grow">
                             <div className="flex flex-wrap items-center gap-3 mb-4">
-                                <div className="flex items-center gap-2 text-primary font-mono text-[10px] md:text-xs uppercase tracking-widest bg-accent px-3 py-1 rounded-full font-bold whitespace-nowrap">
+                                <div className="flex items-center gap-2 text-background/60 font-mono text-[10px] md:text-xs uppercase tracking-widest pr-3 border-r border-primary/20 whitespace-nowrap">
                                     <Calendar size={12} />
                                     {show.date}
                                 </div>
-                                <div className="flex items-center gap-2 text-background/60 font-mono text-[10px] md:text-xs uppercase tracking-widest border-l border-primary/20 pl-3 whitespace-nowrap">
+                                <div className="flex items-center gap-2 text-primary font-mono text-[10px] md:text-xs uppercase tracking-widest bg-accent px-3 py-1 rounded-full font-bold whitespace-nowrap ring-1 ring-accent shadow-[0_0_15px_rgba(var(--accent),0.3)]">
                                     <Clock size={12} />
                                     {show.time}
                                 </div>
                                 {artistMatch && artistMatch.genre && (
-                                    <div className="flex items-center gap-2 text-accent font-mono text-[10px] md:text-xs uppercase tracking-widest border-l border-primary/20 pl-3 whitespace-nowrap">
+                                    <div className="flex items-center gap-2 text-accent font-mono text-[10px] md:text-xs uppercase tracking-widest pl-3 whitespace-nowrap">
                                         {artistMatch.genre}
                                     </div>
                                 )}
