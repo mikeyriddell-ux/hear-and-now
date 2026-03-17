@@ -14,10 +14,10 @@ export default function UpcomingShows() {
 
     const resolveImagePath = (path) => {
         if (!path) return '';
-        if (path.startsWith('http')) return path;
-        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-        const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
-        return `${base}${normalizedPath}`.replace(/\/+/g, '/');
+        if (import.meta.env.DEV && path.startsWith('/hear-and-now')) {
+            return path.replace('/hear-and-now', '');
+        }
+        return path;
     };
 
     useLayoutEffect(() => {
