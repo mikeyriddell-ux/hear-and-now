@@ -4,7 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Calendar, Clock, ArrowRight } from 'lucide-react';
 
 const eventModules = import.meta.glob('../content/events/*.json', { eager: true });
-const events = Object.values(eventModules).map(mod => mod.default || mod);
+const events = Object.values(eventModules)
+    .map(mod => mod.default || mod)
+    .filter(event => event.enabled !== false);
 
 export default function Events() {
     const sectionRef = useRef(null);

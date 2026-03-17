@@ -103,3 +103,4 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "CTA Label", name: "cta", widget: "string", default: "Sign Up" }
       - { label: "CTA Link", name: "ctaLink", widget: "string" }
+      - { label: "Enabled", name: "enabled", widget: "boolean", default: true, hint: "Turn off to hide this event from the live site" }
