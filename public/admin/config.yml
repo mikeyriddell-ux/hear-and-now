@@ -29,7 +29,7 @@ auth:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in Decap CMS (optional)
-site_url: http://hearandnowradio.com
+site_url: https://hearandnowradio.com
 
 local_backend: false
 
