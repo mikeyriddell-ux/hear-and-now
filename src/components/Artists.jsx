@@ -54,8 +54,8 @@ export default function Artists() {
                 <div ref={headingRef} className="mb-20">
                     <span className="font-mono text-accent tracking-widest uppercase text-sm mb-4 block">Current Selectors</span>
                     <h2 className="font-sans text-5xl md:text-8xl font-bold tracking-tighter text-white">
-                        The Residency <br />
-                        <span className="font-drama italic text-accent">Program</span>
+                        Resident <br />
+                        <span className="font-drama italic text-accent">Selectors</span>
                     </h2>
                 </div>
 
