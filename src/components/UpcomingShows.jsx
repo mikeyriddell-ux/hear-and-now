@@ -9,6 +9,9 @@ const upcomingShows = Object.values(showModules)
     .filter(show => show.enabled !== false)
     .sort((a, b) => (a.order || 0) - (b.order || 0));
 
+const artistModules = import.meta.glob('../content/artists/*.json', { eager: true });
+const artists = Object.values(artistModules).map(mod => mod.default || mod);
+
 export default function UpcomingShows() {
     const sectionRef = useRef(null);
 
@@ -52,7 +55,10 @@ export default function UpcomingShows() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {upcomingShows.map((show, idx) => (
+                {upcomingShows.map((show, idx) => {
+                    const artistMatch = artists.find(a => a.name?.toLowerCase() === show.selector?.toLowerCase());
+
+                    return (
                     <div
                         key={idx}
                         className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-500 shadow-xl flex"
@@ -76,13 +82,23 @@ export default function UpcomingShows() {
                                     <Clock size={12} />
                                     {show.time}
                                 </div>
+                                {artistMatch && artistMatch.genre && (
+                                    <div className="flex items-center gap-2 text-accent font-mono text-[10px] md:text-xs uppercase tracking-widest border-l border-primary/20 pl-3 whitespace-nowrap">
+                                        {artistMatch.genre}
+                                    </div>
+                                )}
                             </div>
-                            <h3 className="font-sans text-2xl md:text-3xl font-bold text-background group-hover:text-accent transition-colors">
+                            <h3 className="font-sans text-2xl md:text-3xl font-bold text-background group-hover:text-accent transition-colors mb-2">
                                 {show.selector}
                             </h3>
+                            {artistMatch && artistMatch.bio && (
+                                <p className="font-sans text-sm md:text-base text-background/60 line-clamp-2 md:line-clamp-3">
+                                    {artistMatch.bio}
+                                </p>
+                            )}
                         </div>
                     </div>
-                ))}
+                )})}
             </div>
         </section>
     );
