@@ -114,10 +114,15 @@ export default function Events() {
                                 </p>
 
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pt-8 border-t border-white/5">
-                                    <div className="flex items-start gap-3 max-w-xs text-background/40 group-hover:text-background/70 transition-colors">
-                                        <MapPin className="w-5 h-5 shrink-0 text-accent" />
-                                        <span className="text-sm font-medium leading-tight">{event.location}</span>
-                                    </div>
+                                    <a 
+                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-start gap-3 max-w-xs text-background/40 hover:text-accent transition-colors group/map"
+                                    >
+                                        <MapPin className="w-5 h-5 shrink-0 text-accent group-hover/map:scale-110 transition-transform" />
+                                        <span className="text-sm font-medium leading-tight underline decoration-transparent group-hover/map:decoration-accent transition-all underline-offset-4">{event.location}</span>
+                                    </a>
 
                                 </div>
                             </div>
