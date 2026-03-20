@@ -29,25 +29,39 @@
 
 <body>
     <!-- Scripts for animations -->
+    <!-- Brute-Force CMS Session Persistence -->
     <script>
-        // CMS Session Persistence Helper
-        // Ensures the auth token is saved/restored across page refreshes
         (function() {
-            const STORAGE_KEY = 'decap-cms-user';
-            const user = localStorage.getItem(STORAGE_KEY);
-            if (user) {
-                console.log('Restoring CMS session from storage...');
-                // Decap CMS looks for this key to auto-login
-            }
+            const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce'];
             
-            // Periodically save state to catch login events
-            setInterval(() => {
-                const currentUser = localStorage.getItem(STORAGE_KEY);
-                if (currentUser) {
-                    // Force a local cookie or additional store if needed by some providers
-                    document.cookie = `decap-cms-user=${encodeURIComponent(currentUser)}; max-age=604800; path=/; samesite=lax`;
+            // 1. Restore from Cookies on Load
+            document.cookie.split(';').forEach(cookie => {
+                const [name, value] = cookie.trim().split('=');
+                if (PREFIXES.some(p => name.startsWith(p))) {
+                    try {
+                        const decodedValue = decodeURIComponent(value);
+                        if (!localStorage.getItem(name)) {
+                            localStorage.setItem(name, decodedValue);
+                            console.log('Restored ' + name + ' from cookie.');
+                        }
+                    } catch (e) {}
                 }
-            }, 5000);
+            });
+
+            // 2. Backup to Cookies periodically and on Unload
+            function backup() {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (PREFIXES.some(p => key.startsWith(p))) {
+                        const value = localStorage.getItem(key);
+                        // Save for 7 days
+                        document.cookie = `${key}=${encodeURIComponent(value)}; max-age=${60*60*24*7}; path=/; samesite=lax`;
+                    }
+                }
+            }
+
+            setInterval(backup, 2000);
+            window.addEventListener('beforeunload', backup);
         })();
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
