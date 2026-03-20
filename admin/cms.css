@@ -39,6 +39,10 @@ body {
   border-bottom: 1px solid var(--slate) !important;
 }
 
+[class*=AppHeader] img, [class*=Logo] {
+  filter: brightness(0) invert(1) !important;
+}
+
 /* Collection List */
 [class*=CollectionMain] {
   background-color: var(--obsidian) !important;
