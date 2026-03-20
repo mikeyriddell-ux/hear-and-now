@@ -29,39 +29,39 @@
 
 <body>
     <!-- Scripts for animations -->
-    <!-- Brute-Force CMS Session Persistence -->
+    <!-- Enhanced Brute-Force CMS Session Persistence -->
     <script>
         (function() {
-            const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce'];
+            const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce', 'site_id'];
             
-            // 1. Restore from Cookies on Load
+            // 1. Restore from Cookies on Load (CRITICAL: Runs before CMS)
             document.cookie.split(';').forEach(cookie => {
                 const [name, value] = cookie.trim().split('=');
                 if (PREFIXES.some(p => name.startsWith(p))) {
                     try {
                         const decodedValue = decodeURIComponent(value);
-                        if (!localStorage.getItem(name)) {
-                            localStorage.setItem(name, decodedValue);
-                            console.log('Restored ' + name + ' from cookie.');
-                        }
+                        localStorage.setItem(name, decodedValue);
+                        console.log('Admin: Restored ' + name);
                     } catch (e) {}
                 }
             });
 
-            // 2. Backup to Cookies periodically and on Unload
+            // 2. Backup to Cookies regularly
             function backup() {
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
                     if (PREFIXES.some(p => key.startsWith(p))) {
                         const value = localStorage.getItem(key);
-                        // Save for 7 days
                         document.cookie = `${key}=${encodeURIComponent(value)}; max-age=${60*60*24*7}; path=/; samesite=lax`;
                     }
                 }
             }
 
-            setInterval(backup, 2000);
+            setInterval(backup, 1000);
             window.addEventListener('beforeunload', backup);
+            
+            // 3. Special case for the site_id
+            localStorage.setItem('site_id', 'b5518f69-a810-4373-9399-60049f26ce35');
         })();
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
