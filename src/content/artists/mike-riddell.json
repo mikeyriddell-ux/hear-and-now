@@ -1,9 +1,10 @@
 {
-    "name": "Mike Riddell",
-    "role": "The Selector",
-    "genre": "Deep / Melodic House",
-    "image": "/assets/artists/mike-riddell.jpg",
-    "bio": "Maestro of the long-form narrative. culptor of sonic spaces that transcend the dancefloor.",
-    "zoomScale": "3.2",
-    "objectPosition": "50% 12%"
+  "name": "Mike Riddell",
+  "role": "The Selector",
+  "genre": "Disco / House",
+  "image": "/assets/artists/mike-riddell.jpg",
+  "bio": "Blending 80s synth-funk with driving house rhythms to curate a high-voltage dance floor that’s heavy on the bass and even heavier on the soul.",
+  "zoomScale": "3.2",
+  "objectPosition": "50% 12%",
+  "enabled": true
 }
