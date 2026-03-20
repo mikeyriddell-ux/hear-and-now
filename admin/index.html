@@ -30,54 +30,35 @@
 
 <body>
     <!-- Scripts for animations -->
-    <!-- Advanced CMS Session Persistence (netlifyIdentity Polyfill) -->
+    <!-- Stable CMS Session Persistence (Backup/Restore Only) -->
     <script>
         (function() {
             const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce', 'site_id'];
             
-            // 1. Restore from Cookies on Load
+            // 1. Restore from Cookies
             document.cookie.split(';').forEach(cookie => {
                 const [name, value] = cookie.trim().split('=');
                 if (PREFIXES.some(p => name.startsWith(p))) {
                     try {
-                        localStorage.setItem(name, decodeURIComponent(value));
+                        const decodedValue = decodeURIComponent(value);
+                        if (!localStorage.getItem(name)) {
+                            localStorage.setItem(name, decodedValue);
+                        }
                     } catch (e) {}
                 }
             });
 
-            // 2. Netlify Identity Polyfill
-            // Decap CMS checks this object to stabilize sessions
-            window.netlifyIdentity = {
-                on: () => {},
-                currentUser: () => {
-                    const user = localStorage.getItem('decap-cms-user') || localStorage.getItem('netlify-cms-user');
-                    if (user) {
-                        try { return JSON.parse(user); } catch (e) { return null; }
-                    }
-                    return null;
-                },
-                logout: () => {
-                    PREFIXES.forEach(p => {
-                        for (let i = localStorage.length - 1; i >= 0; i--) {
-                            const key = localStorage.key(i);
-                            if (key && key.startsWith(p)) localStorage.removeItem(key);
-                        }
-                    });
-                }
-            };
-
-            // 3. Persistent Backup
+            // 2. Backup to Cookies
             function backup() {
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
-                    if (PREFIXES.some(p => key.startsWith(p))) {
+                    if (key && PREFIXES.some(p => key.startsWith(p))) {
                         const value = localStorage.getItem(key);
                         document.cookie = `${key}=${encodeURIComponent(value)}; max-age=${60*60*24*7}; path=/; samesite=lax`;
                     }
                 }
             }
-            setInterval(backup, 1000);
-            localStorage.setItem('site_id', 'b5518f69-a810-4373-9399-60049f26ce35');
+            setInterval(backup, 2000);
         })();
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
