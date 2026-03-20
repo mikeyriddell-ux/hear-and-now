@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Circle } from 'lucide-react';
 
 // Load all broadcast modules from the content directory
@@ -18,7 +18,7 @@ export default function Features() {
         if (window.Mixcloud) {
             iframeRefs.current.forEach((iframe, index) => {
                 if (!iframe) return;
-                
+
                 // Initialize widget
                 const widget = window.Mixcloud.PlayerWidget(iframe);
                 widgetsRef.current[index] = widget;

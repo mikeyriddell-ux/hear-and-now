@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { User, Music, Zap } from 'lucide-react';
+import { User, Zap } from 'lucide-react';
 
 const artistModules = import.meta.glob('../content/artists/*.json', { eager: true });
 const artists = Object.values(artistModules)
@@ -77,11 +77,6 @@ export default function Artists() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
-                                <div className="absolute top-6 right-6">
-                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                                        <Music className="w-4 h-4 text-accent" />
-                                    </div>
-                                </div>
                             </div>
 
                             <div className="p-8 relative">
