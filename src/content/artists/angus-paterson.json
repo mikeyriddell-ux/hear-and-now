@@ -1,9 +1,10 @@
 {
-    "name": "Angus Paterson",
-    "role": "The Icon",
-    "genre": "Classic House / Acid",
-    "image": "/assets/artists/angus-paterson.jpg",
-    "bio": "A bridge between fashion and frequencies. Angus brings the raw energy of Chicago to the world's most elite stages.",
-    "zoomScale": "1.5",
-    "objectPosition": "50% 45%"
+  "name": "Angus Paterson",
+  "role": "DJ / Producer",
+  "genre": "Italo to Techno",
+  "image": "/assets/artists/gus-paterson.jpeg",
+  "bio": "Brining the raw energy of Itlay to your local sticky floored dive bar",
+  "zoomScale": "1.5",
+  "objectPosition": "50% 45%",
+  "enabled": true
 }
