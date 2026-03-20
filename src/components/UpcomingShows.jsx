@@ -54,7 +54,7 @@ export default function UpcomingShows() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {upcomingShows.map((show, idx) => {
                     const artistMatch = artists.find(a => a.name?.toLowerCase() === show.selector?.toLowerCase());
 
@@ -64,7 +64,7 @@ export default function UpcomingShows() {
                         className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-500 shadow-xl flex"
                     >
                         {artistMatch?.image && (
-                            <div className="w-1/3 min-w-[120px] md:min-w-[160px] aspect-square flex-shrink-0">
+                            <div className="w-1/3 min-w-[140px] md:min-w-[200px] lg:min-w-[160px] aspect-square flex-shrink-0">
                                 <img
                                     src={resolveImagePath(artistMatch.image)}
                                     alt={show.selector}
