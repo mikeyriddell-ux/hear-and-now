@@ -1,57 +1,148 @@
-/* Decap CMS Mobile Responsive Overrides */
+/* Decap CMS 3.0 Mobile Responsive Overrides */
+/* Adapted from: https://github.com/hithismani/responsive-decap */
 
-@media (max-width: 768px) {
-  /* Fix Sidebar */
-  aside {
-    width: 60px !important;
-    min-width: 60px !important;
-    overflow: hidden;
+@media (max-width: 799px) {
+  /* Bring Any Dropdown To Center Of Page */
+  [class*=DropdownList]{
+    position: fixed !important;
+    min-width: 20% !important;
+    width: 90% !important;
+    margin: auto !important;
+    height: fit-content !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 10px !important;
+    background: #e6f4fd !important;
+    border: 2px solid #3a69c7 !important;
+    z-index: 10000 !important;
   }
-  aside span {
+
+  /* Add Overflow To Modal Window */
+  [class*=StyledModal]{
+    width: 90% !important;
+    max-width: 90vw !important;
+  }
+
+  [class*=LibraryTitle]{
     display: none !important;
   }
-  aside svg {
-    margin: 0 auto !important;
+
+  [class*=CollectionTopNewButton]{
+    padding: 0px 10px !important;
+    height: auto !important;
   }
 
-  /* Stack Editor Fields */
-  .nc-controlPane-control {
-    padding: 10px !important;
-  }
-  
-  /* Improve Button Touch Targets */
-  button {
-    min-height: 44px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+  [class*=LibraryTop]{
+    overflow-x: auto !important;
+    height: fit-content !important;
+    padding-bottom: 10px !important;
   }
 
-  /* Fix Header and Toolbar */
-  header div[class*="AppHeaderContent"] {
-    padding: 0 10px !important;
-  }
-
-  /* Make Preview Pane full width or hidden on very small screens */
-  div[class*="PreviewPane"] {
+  /* Hide Blog Post Title From Navbar */ 
+  [class*=BackCollection]{
     display: none !important;
   }
-  
-  div[class*="EditorContainer"] {
+
+  /* Add Padding To Control Pane */ 
+  [class*=ControlPaneContainer] {
+    padding: 0px 10px !important;
+  }
+
+  [class*=AppHeaderContent],
+  [class*=AppMainContainer] {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    min-width: calc(100vw - 24px) !important;
+    max-width: 100vw !important;
+  }
+
+  [class*=AppHeaderContent] {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  [class*=AppHeaderQuickNewButton] {
     width: 100% !important;
-    min-width: 100% !important;
   }
 
-  /* Optimize Collection List */
-  div[class*="CollectionMain"] {
-    padding: 10px !important;
+  [class*=AppHeaderButton] {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
   }
-  
-  ul[class*="CollectionList"] {
-    grid-template-columns: 1fr !important;
+
+  [class*=EditorContainer],
+  [class*=ToolbarContainer] {
+    min-width: initial !important;
+    overflow-x: auto !important;
+  }
+
+  [class*=ToolbarSubSectionFirst] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  [class*=PublishedToolbarButton] {
+    padding: 0 8px !important;
+  }
+
+  [class*=PublishedToolbarButton]::after {
+    display: none !important;
+  }
+
+  [class*=ToolbarSubSectionFirst] {
+    flex-direction: row !important;
+  }
+
+  [class*=SearchInput] {
+    margin-top: 5px !important;
+  }
+
+  [class*=ViewControls] {
+    position: initial !important;
+  }
+
+  [class*=PreviewPaneContainer-ControlPaneContainer] {
+    padding: 0 !important;
+  }
+
+  [class*=ControlPaneContainer] {
+    max-width: 100vw !important;
+  }
+
+  [class*=EditorControlBar] [class*=ToolbarContainer] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  [class*=CollectionContainer] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  [class*=SidebarContainer] {
+    position: initial !important;
+    width: initial !important;
+  }
+
+  [class*=CollectionMain] {
+    padding-left: 0 !important;
+    margin-top: 20px !important;
   }
 }
 
-/* General UI Styling for better contrast in dark mode (optional but nice) */
+/* Dark Mode Support & High Contrast */
 .nc-app-container {
-    background-color: #0D0D12 !important;
+  background-color: #0D0D12 !important;
+}
+
+[class*=EditorLayout]{
+    background: #0D0D12 !important;
+}
+
+/* Hide Preview Pane on Mobile to save space */
+@media (max-width: 799px) {
+  [class*=PreviewPaneContainer], [class*=PreviewPane] {
+    display: none !important;
+  }
 }
