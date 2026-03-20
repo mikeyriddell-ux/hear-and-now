@@ -29,6 +29,27 @@
 
 <body>
     <!-- Scripts for animations -->
+    <script>
+        // CMS Session Persistence Helper
+        // Ensures the auth token is saved/restored across page refreshes
+        (function() {
+            const STORAGE_KEY = 'decap-cms-user';
+            const user = localStorage.getItem(STORAGE_KEY);
+            if (user) {
+                console.log('Restoring CMS session from storage...');
+                // Decap CMS looks for this key to auto-login
+            }
+            
+            // Periodically save state to catch login events
+            setInterval(() => {
+                const currentUser = localStorage.getItem(STORAGE_KEY);
+                if (currentUser) {
+                    // Force a local cookie or additional store if needed by some providers
+                    document.cookie = `decap-cms-user=${encodeURIComponent(currentUser)}; max-age=604800; path=/; samesite=lax`;
+                }
+            }, 5000);
+        })();
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ backend:
   auth_endpoint: /sites/b5518f69-a810-4373-9399-60049f26ce35/pkce
   auth_token_endpoint: /sites/b5518f69-a810-4373-9399-60049f26ce35/token
   gateway_url: https://gateway.decapbridge.com
-stay_logged_in: true
+  stay_logged_in: true
 
   # See who did what (optional)
   commit_messages:
