@@ -1,61 +1,58 @@
-/* Decap CMS - Mobile Responsiveness (The Ultimate Fix v17) */
+/* Decap CMS - Mobile Responsiveness (Nuclear Stack v18) */
 
-@media (max-width: 799px) {
-  /* 0. Global Reset for Mobile - Allow stacking */
-  html, body, #nc-root, [class*="AppMainContainer"] {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  /* 1. Force Column Layout on SplitPane structure */
+@media (max-width: 900px) {
+  /* Force stacking on the main split pane */
   [class*="SplitPane"], 
   .SplitPane {
-    display: block !important; 
+    display: block !important;
     height: auto !important;
     width: 100% !important;
-    min-width: 0 !important;
+    position: relative !important;
   }
 
-  /* 2. Hide the Preview, Resizer, and Desktop Wrappers */
-  [class*="SplitPane"] > .Resizer,
+  /* Hide the vertical resizer */
   .Resizer.vertical,
-  [class*="PreviewPaneContainer"],
-  [class*="previewPane"],
-  [class*="SplitPane"] > div:last-child,
-  .nc-previewPane-frame {
+  [class*="SplitPane"] > .Resizer {
     display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
 
-  /* 3. Force Full Width on the Editor, Sidebar, and Collections */
+  /* Force the first pane (Editor) to full width and reset fixed positions */
   [class*="SplitPane"] > div:first-child,
   [class*="EditorContainer"],
   [class*="ControlPaneContainer"],
   [class*="SidebarContainer"],
-  [class*="CollectionMain"],
-  [class*="Card"],
-  [class*="CollectionTop"] {
+  [class*="CollectionMain"] {
     display: block !important;
     width: 100% !important;
-    min-width: 0 !important; 
+    min-width: 0 !important;
     max-width: 100% !important;
     position: relative !important;
-    left: 0 !important;
-    top: 0 !important;
-    bottom: auto !important;
+    top: auto !important;
+    left: auto !important;
     right: auto !important;
-    margin: 0 !important;
+    bottom: auto !important;
     padding: 10px !important;
     box-sizing: border-box !important;
-    float: none !important;
   }
 
-  /* 4. Dropdown Polish - Keep it fixed at bottom */
+  /* Hide the second pane (Preview) */
+  [class*="SplitPane"] > div:last-child,
+  [class*="PreviewPaneContainer"],
+  [class*="previewPane"] {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+  }
+
+  /* Ensure the App Header content also wraps */
+  [class*="AppHeaderContent"] {
+    flex-wrap: wrap !important;
+    height: auto !important;
+  }
+
+  /* Dropdown Polish */
   [class*=DropdownList] {
     position: fixed !important;
     background-color: white !important;
