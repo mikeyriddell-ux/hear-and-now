@@ -177,7 +177,6 @@ button {
 /* Re-invert media, icons, AND specific widget containers that became light due to parent inversion */
 [class*="SplitPane"] img,
 [class*="SplitPane"] video,
-[class*="SplitPane"] [class*="ControlContainer"] img,
 [class*="SplitPane"] .material-icons,
 [class*="SplitPane"] iframe,
 [class*="SplitPane"] [class*="ControlContainer"], 
@@ -185,6 +184,12 @@ button {
 [class*="SplitPane"] [class*="FileWidget"]
 {
   filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Prevent double-inversion for images nested inside re-inverted containers */
+[class*="ControlContainer"] img,
+[class*="FileWidget"] img {
+  filter: none !important;
 }
 
 /* Ensure text remains high contrast after inversion */
