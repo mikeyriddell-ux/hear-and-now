@@ -14,11 +14,20 @@
 
 /* 1. Global Backgrounds */
 body, 
+#nc-root,
+[class*=LoginPage],
 [class*=AppMainContainer],
 [class*=CollectionMain],
 [class*=EditorContainer] {
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
+}
+
+[class*=LoginContainer] {
+  background-color: var(--theme-surface) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
 }
 
 /* 2. Sidebar & Navigation */
