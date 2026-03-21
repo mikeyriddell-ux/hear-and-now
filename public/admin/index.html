@@ -24,18 +24,22 @@
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
         }
+    <style>
+        /* Eliminate Login Flicker on Refresh */
+        #nc-root:empty { display: none !important; }
+        body.restoring #nc-root { opacity: 0; pointer-events: none; }
     </style>
     <link rel="stylesheet" href="cms.css" />
 </head>
 
-<body>
+<body class="restoring">
     <!-- Scripts for animations -->
     <!-- Stable CMS Session Persistence (Backup/Restore Only) -->
     <script>
         (function() {
             const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce', 'site_id'];
             
-            // 1. Restore from Cookies
+            // 1. Synchronous Restore from Cookies
             document.cookie.split(';').forEach(cookie => {
                 const [name, value] = cookie.trim().split('=');
                 if (PREFIXES.some(p => name.startsWith(p))) {
@@ -47,6 +51,11 @@
                     } catch (e) {}
                 }
             });
+
+            // 2. Remove hider after a tiny delay
+            setTimeout(() => {
+                document.body.classList.remove('restoring');
+            }, 150);
 
             // 2. Backup to Cookies
             function backup() {
