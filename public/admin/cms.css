@@ -1,4 +1,4 @@
-/* Decap CMS - Ultimate Edge-to-Edge Mobile (v24) */
+/* Decap CMS - Ultimate Edge-to-Edge Mobile (v25) */
 
 @media (max-width: 900px) {
   /* 1. Global Reset - Remove all grey page margins */
@@ -19,8 +19,6 @@
   }
 
   /* 3. Hide Unnecessary Panes (Preview & Resizer) */
-  /* CRITICAL FIX: The parent div contains BOTH PreviewPaneContainer and ControlPaneContainer classes! */
-  /* We MUST use :not() so we don't accidentally hide the entire editor! */
   [class*="SplitPane"] > .Resizer,
   .Resizer.vertical,
   [class*="PreviewPaneContainer"]:not([class*="ControlPaneContainer"]),
@@ -33,17 +31,13 @@
     visibility: hidden !important;
   }
 
-  /* 4. Allow Editor to Flex properly (Crucial Fix for Invisible Fields) */
+  /* 4. Let Editor Fill Space but Preserve Display Mode */
   [class*="SplitPane"] > div:first-child,
-  [class*="EditorContainer"],
-  [class*="ControlPaneContainer"] {
-    display: flex !important; /* MUST BE FLEX */
-    flex-direction: column !important;
+  [class*="EditorContainer"] {
     width: 100% !important;
     flex: 1 1 auto !important; 
     max-width: 100% !important;
     padding: 0 !important;
-    overflow: visible !important;
   }
 
   /* 5. Edge-to-Edge Seamless Collections & Sidebar */
@@ -81,13 +75,25 @@
     box-sizing: border-box !important;
   }
 
-  /* Fix Header */
-  [class*="AppHeaderContent"] {
+  /* 6. Fix Header & Toolbar Overflow */
+  [class*="AppHeaderContent"],
+  [class*="EditorToolbar"],
+  [class*="ToolbarContainer"] {
+    display: flex !important;
     flex-wrap: wrap !important;
     height: auto !important;
     padding: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  [class*="ToolbarContainer"] > div,
+  [class*="EditorToolbar"] > div {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
   }
   
   /* Dropdown Menu (Quick Add / Publish) */
