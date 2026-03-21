@@ -1,66 +1,52 @@
-/* Decap CMS - Mobile Responsiveness (Nuclear Stack v18) */
+/* Decap CMS - Original Mobile Responsive Overrides (v19) */
 
-@media (max-width: 900px) {
-  /* Force stacking on the main split pane */
-  [class*="SplitPane"], 
-  .SplitPane {
-    display: block !important;
-    height: auto !important;
-    width: 100% !important;
-    position: relative !important;
+@media (max-width: 799px) {
+  /* Fix Sidebar */
+  aside {
+    width: 60px !important;
+    min-width: 60px !important;
+    overflow: hidden;
   }
-
-  /* Hide the vertical resizer */
-  .Resizer.vertical,
-  [class*="SplitPane"] > .Resizer {
+  aside span {
     display: none !important;
   }
+  aside svg {
+    margin: 0 auto !important;
+  }
 
-  /* Force the first pane (Editor) to full width and reset fixed positions */
-  [class*="SplitPane"] > div:first-child,
-  [class*="EditorContainer"],
-  [class*="ControlPaneContainer"],
-  [class*="SidebarContainer"],
-  [class*="CollectionMain"] {
-    display: block !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+  /* Stack Editor Fields */
+  .nc-controlPane-control {
     padding: 10px !important;
-    box-sizing: border-box !important;
+  }
+  
+  /* Improve Button Touch Targets */
+  button {
+    min-height: 44px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 
-  /* Hide the second pane (Preview) */
-  [class*="SplitPane"] > div:last-child,
-  [class*="PreviewPaneContainer"],
-  [class*="previewPane"] {
+  /* Fix Header and Toolbar */
+  header div[class*="AppHeaderContent"] {
+    padding: 0 10px !important;
+  }
+
+  /* Make Preview Pane full width or hidden on very small screens */
+  div[class*="PreviewPane"] {
     display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    visibility: hidden !important;
-    overflow: hidden !important;
+  }
+  
+  div[class*="EditorContainer"] {
+    width: 100% !important;
+    min-width: 100% !important;
   }
 
-  /* Ensure the App Header content also wraps */
-  [class*="AppHeaderContent"] {
-    flex-wrap: wrap !important;
-    height: auto !important;
+  /* Optimize Collection List */
+  div[class*="CollectionMain"] {
+    padding: 10px !important;
   }
-
-  /* Dropdown Polish */
-  [class*=DropdownList] {
-    position: fixed !important;
-    background-color: white !important;
-    border: 1px solid #ddd !important;
-    width: 90% !important;
-    left: 5% !important;
-    bottom: 20px !important;
-    z-index: 999999 !important;
-    box-shadow: 0 -4px 15px rgba(0,0,0,0.1) !important;
+  
+  ul[class*="CollectionList"] {
+    grid-template-columns: 1fr !important;
   }
 }
