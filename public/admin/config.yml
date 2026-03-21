@@ -3,7 +3,6 @@ backend:
   name: git-gateway
   repo: mikeyriddell-ux/hear-and-now
   branch: main
-  auth_type: pkce
   identity_url: https://auth.decapbridge.com/sites/b5518f69-a810-4373-9399-60049f26ce35
   gateway_url: https://gateway.decapbridge.com
   site_id: b5518f69-a810-4373-9399-60049f26ce35
