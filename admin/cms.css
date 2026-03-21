@@ -146,3 +146,49 @@ button {
     border-bottom: 1px solid var(--theme-border) !important;
   }
 }
+
+/* 8. Widget Specific Polish */
+[class*=ControlPaneContainer] div[class*=ControlContainer] {
+  background-color: transparent !important;
+}
+
+/* Fix Image Widget White Blocks */
+[class*=ImageWrapper], 
+[class*=ImageWidgetContainer],
+[class*=StyledImage] {
+  background-color: var(--theme-surface-high) !important;
+  border: 1px dashed var(--theme-border) !important;
+}
+
+/* Fix Boolean/Toggle Widget */
+[class*=BooleanControl] {
+  background-color: transparent !important;
+}
+
+[class*=BooleanControl] span {
+  background-color: var(--theme-surface-high) !important;
+}
+
+/* 9. Preview Pane Readability */
+[class*=PreviewPaneContainer] {
+  background-color: #fff !important; /* Keep preview white for accuracy to site? Or dark? */
+  /* If user wants TRUE dark mode, we force preview dark: */
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+}
+
+[class*=PreviewPaneContainer] * {
+  color: inherit !important;
+}
+
+/* Image Upload Buttons */
+[class*=ControlPaneContainer] button {
+  background-color: var(--theme-surface-high) !important;
+  color: var(--theme-primary) !important;
+  border: 1px solid var(--theme-border) !important;
+}
+
+[class*=ControlPaneContainer] button:hover {
+  background-color: var(--theme-primary) !important;
+  color: var(--theme-bg) !important;
+}
