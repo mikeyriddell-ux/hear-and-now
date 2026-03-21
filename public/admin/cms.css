@@ -147,48 +147,72 @@ button {
   }
 }
 
-/* 8. Widget Specific Polish */
-[class*=ControlPaneContainer] div[class*=ControlContainer] {
+/* 8. Widget Specific Polish - MAXIMUM SATURATION OVERRIDE */
+
+/* Force all control containers to inherit dark backgrounds */
+[class*=ControlPaneContainer] div,
+[class*=ControlPaneContainer] fieldset,
+[class*=ControlPaneContainer] section {
   background-color: transparent !important;
+  background: transparent !important;
+  border-color: var(--theme-border) !important;
 }
 
-/* Fix Image Widget White Blocks */
-[class*=ImageWrapper], 
-[class*=ImageWidgetContainer],
-[class*=StyledImage] {
+/* Specific Target for the 'White Box' in Image/File widgets */
+[class*=ControlPaneContainer] [class*="ControlContainer"],
+[class*=ControlPaneContainer] [class*="ToggleContainer"],
+[class*=ControlPaneContainer] [class*="FileWidget"] {
+  background-color: var(--theme-surface) !important;
+  color: var(--theme-text) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 8px !important;
+}
+
+/* Fix Boolean/Toggle Switch specifically */
+[class*=ToggleContainer] span {
   background-color: var(--theme-surface-high) !important;
-  border: 1px dashed var(--theme-border) !important;
+  border: 1px solid var(--theme-border) !important;
 }
 
-/* Fix Boolean/Toggle Widget */
-[class*=BooleanControl] {
-  background-color: transparent !important;
+[class*=ToggleContainer][class*=active] span {
+  background-color: var(--theme-primary) !important;
 }
 
-[class*=BooleanControl] span {
-  background-color: var(--theme-surface-high) !important;
-}
-
-/* 9. Preview Pane Readability */
-[class*=PreviewPaneContainer] {
-  background-color: #fff !important; /* Keep preview white for accuracy to site? Or dark? */
-  /* If user wants TRUE dark mode, we force preview dark: */
+/* 9. Preview Pane - THE NUCLEAR OPTION */
+[class*=PreviewPaneContainer],
+[class*=PreviewPaneFrame],
+iframe[class*=PreviewPaneFrame] {
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
+  filter: invert(0.9) hue-rotate(180deg) !important; /* Last resort: invert the whole pane? No, let's try direct first */
 }
 
-[class*=PreviewPaneContainer] * {
-  color: inherit !important;
+/* Revert the nuclear option if it's too much, but let's try direct overrides first */
+[class*=PreviewPaneContainer] {
+  filter: none !important;
+  background-color: var(--theme-bg) !important;
 }
 
-/* Image Upload Buttons */
-[class*=ControlPaneContainer] button {
+/* Ensure images in preview aren't inverted if we used the nuclear option */
+[class*=PreviewPaneContainer] img {
+  filter: invert(1) hue-rotate(180deg) !important; 
+}
+
+/* 10. Image Upload Buttons & Action Polish */
+[class*=ControlPaneContainer] button,
+[class*=ControlPaneContainer] [class*="Button"] {
   background-color: var(--theme-surface-high) !important;
   color: var(--theme-primary) !important;
   border: 1px solid var(--theme-border) !important;
+  box-shadow: none !important;
 }
 
 [class*=ControlPaneContainer] button:hover {
   background-color: var(--theme-primary) !important;
   color: var(--theme-bg) !important;
+}
+
+/* Fix White 'Card' in Editor */
+[class*=EditorContainer] [class*="ControlPane"] {
+  background-color: var(--theme-bg) !important;
 }
