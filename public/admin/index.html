@@ -36,8 +36,7 @@
         }
         #flicker-killer.fade-out { opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     </style>
-    <link rel="stylesheet" href="decap-dark-mode.css?v=2" />
-    <link rel="stylesheet" href="cms.css?v=30" />
+    <link rel="stylesheet" href="cms.css" />
 </head>
 
 <body>
@@ -75,9 +74,9 @@
                     link.href = 'https://decapbridge.com/auth/password/forgot?site_id=b5518f69-a810-4373-9399-60049f26ce35';
                     link.target = '_blank';
                     link.innerText = 'Forgot password?';
-                    link.style = 'display: block; margin-top: 15px; color: #BBB; font-size: 13px; text-decoration: none; text-align: center; transition: color 0.2s;';
-                    link.onmouseover = () => { link.style.textDecoration = 'underline'; link.style.color = '#40E0D0'; };
-                    link.onmouseout = () => { link.style.textDecoration = 'none'; link.style.color = '#BBB'; };
+                    link.style = 'display: block; margin-top: 15px; color: #666; font-size: 13px; text-decoration: none; text-align: center;';
+                    link.onmouseover = () => link.style.textDecoration = 'underline';
+                    link.onmouseout = () => link.style.textDecoration = 'none';
                     loginButton.parentNode.insertBefore(link, loginButton.nextSibling);
                 }
             });
