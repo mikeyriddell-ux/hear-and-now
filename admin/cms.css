@@ -165,60 +165,34 @@ button {
   }
 }
 
-/* 8. Widget Specific Polish - INFINITE DEPTH OVERRIDE */
-
-[class*=ControlPaneContainer] div,
-[class*=ControlPaneContainer] fieldset,
-[class*=ControlPaneContainer] section,
-[class*=ControlPaneContainer] ul,
-[class*=ControlPaneContainer] li {
-  background-color: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
-  border-color: var(--theme-border) !important;
+/* 8. Widget Specific Polish - NUCLEAR INVERSION (Phase 3) */
+/* This flips the persistent white backgrounds that are injected as inline styles */
+[class*="ControlPaneContainer"],
+[class*="PreviewPaneContainer"],
+[class*="EditorControlPane"],
+[class*="EditorContainer"] {
+  background-color: #ffffff !important; 
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(0.9) !important;
 }
 
-/* Specific Target for 'White Box' in Image/File/Boolean widgets */
-[class*="ControlContainer"],
-[class*="ToggleContainer"],
-[class*="FileWidget"],
-[class*="WidgetContainer"] {
-  background-color: var(--theme-surface) !important;
-  color: var(--theme-text) !important;
-  border: 1px solid var(--theme-border) !important;
-}
-
-/* Buttons inside widgets */
-[class*=ControlPaneContainer] button,
-[class*=ControlPaneContainer] [class*="Button"] {
-  background-color: var(--theme-surface-high) !important;
-  color: var(--theme-primary) !important;
-  border: 1px solid var(--theme-border) !important;
-}
-
-/* 9. Preview Pane - CHAMELEON INVERSION & LUMINOUS TEXT */
-[class*="SplitPane"] > div:last-child,
-[class*=PreviewPaneContainer] {
-  background-color: #fff !important; 
-  filter: invert(1) hue-rotate(180deg) brightness(1.2) !important; /* Boost brightness */
-}
-
-/* Force Light Text on everything inside preview */
-[class*="SplitPane"] > div:last-child *,
-[class*=PreviewPaneContainer] * {
-  color: #fff !important; /* Force white text */
-  text-shadow: 0 0 1px rgba(0,0,0,0.5) !important; /* Subtle shadow for legibility */
-}
-
-/* Re-invert media so it looks normal */
-[class*="SplitPane"] > div:last-child img,
-[class*="SplitPane"] > div:last-child video,
-[class*="SplitPane"] > div:last-child [style*="background-image"],
-[class*=PreviewPaneContainer] img,
-[class*=PreviewPaneContainer] video {
+/* Re-invert media & icons to look natural */
+[class*="ControlPaneContainer"] img,
+[class*="ControlPaneContainer"] video,
+[class*="ControlPaneContainer"] [class*="ControlContainer"] img,
+[class*="ControlPaneContainer"] .material-icons,
+[class*="PreviewPaneContainer"] img,
+[class*="PreviewPaneContainer"] video,
+[class*="PreviewPaneContainer"] iframe {
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
-/* Fix the Boolean toggle button itself */
+/* Ensure text inside inverted containers remains high contrast */
+[class*="ControlPaneContainer"] *,
+[class*="PreviewPaneContainer"] * {
+  text-shadow: 0 0 1px rgba(0,0,0,0.1) !important;
+}
+
+/* Specific fix for the Boolean toggle button after inversion */
 [class*=ToggleContainer] span {
-  background-color: var(--theme-surface-high) !important;
+  filter: invert(1) hue-rotate(180deg) !important;
 }
