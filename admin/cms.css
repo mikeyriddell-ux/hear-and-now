@@ -1,55 +1,103 @@
-/* Decap CMS - Refined Minimal Mobile Responsiveness (v22) */
+/* Decap CMS - Ultimate Edge-to-Edge Mobile (v23) */
 
 @media (max-width: 900px) {
+  /* 1. Global Reset - Remove all grey page margins */
+  html, body, #nc-root {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important; /* Make the whole page white to blend the cards */
+    width: 100% !important;
+  }
 
-  /* 1. Stack the Sidebar and Collections organically */
-  [class*="AppMainContainer"] {
+  /* 2. Stack the main areas natively (safely preserving flex) */
+  [class*="AppMainContainer"],
+  [class*="SplitPane"], .SplitPane {
     display: flex !important;
     flex-direction: column !important;
-  }
-  
-  [class*="SidebarContainer"] {
-    position: relative !important;
+    height: auto !important;
     width: 100% !important;
-    min-width: 100% !important;
-    border-right: none !important;
-    border-bottom: 1px solid #dfdfe3 !important;
   }
 
-  /* 2. Hide Preview Pane */
-  /* This targets the actual editor preview safely without corrupting SplitPane rendering */
+  /* 3. Hide Unnecessary Panes (Preview & Resizer) */
+  [class*="SplitPane"] > .Resizer,
+  .Resizer.vertical,
   [class*="PreviewPaneContainer"],
   [class*="previewPane"],
-  [class*="nc-previewPane-frame"] {
+  [class*="SplitPane"] > div:last-child {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
+    flex: 0 !important;
     visibility: hidden !important;
   }
 
-  /* 3. Let the Editor Pane grow */
-  /* Target the editor specifically so it expands to fill the missing preview space */
-  [class*="EditorContainer"] {
+  /* 4. Allow Editor to Flex properly (Crucial Fix for Invisible Fields) */
+  [class*="SplitPane"] > div:first-child,
+  [class*="EditorContainer"],
+  [class*="ControlPaneContainer"] {
+    display: flex !important; /* MUST BE FLEX */
+    flex-direction: column !important;
     width: 100% !important;
-    min-width: 100% !important;
+    flex: 1 1 auto !important; 
     max-width: 100% !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
 
-  /* 4. Fix Toolbar Header overlap */
+  /* 5. Edge-to-Edge Seamless Collections & Sidebar */
+  [class*="SidebarContainer"],
+  [class*="CollectionMain"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+    border-right: none !important;
+  }
+
+  /* Make the cards lose their floating drop-shadows and margins */
+  [class*="SidebarCard"],
+  [class*="CollectionTop"],
+  [class*="Card"] {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #eee !important;
+    background-color: white !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  
+  /* Retain internal padding for the text/buttons so they aren't flush with viewport */
+  [class*="SidebarContainer"] > div,
+  [class*="CollectionMain"] > div {
+    padding: 15px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fix Header */
   [class*="AppHeaderContent"] {
     flex-wrap: wrap !important;
     height: auto !important;
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-
-  /* 5. Clean Dropdown Menu */
+  
+  /* Dropdown Menu (Quick Add / Publish) */
   [class*=DropdownList] {
     position: fixed !important;
     background-color: white !important;
     border: 1px solid #ddd !important;
-    width: 90% !important;
-    left: 5% !important;
-    bottom: 20px !important;
+    width: 100% !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    border-radius: 12px 12px 0 0 !important;
     z-index: 999999 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.1) !important;
   }
 }
