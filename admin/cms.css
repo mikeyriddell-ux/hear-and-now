@@ -129,7 +129,7 @@
   }
 
   /* Hide Preview Pane on Mobile to save space */
-  [class*=PreviewPaneContainer], [class*=PreviewPane] {
+  [class*=PreviewPaneContainer]:not([class*="ControlPaneContainer"]), [class*=PreviewPane]:not([class*="ControlPaneContainer"]) {
     display: none !important;
   }
 }
