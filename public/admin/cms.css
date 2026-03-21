@@ -23,6 +23,18 @@ body,
   color: var(--theme-text) !important;
 }
 
+/* 1.1 Login Logo & Button Polish */
+[class*=LoginPage] img {
+  filter: invert(1) brightness(2) !important; /* Make black logo white */
+}
+
+[class*=LoginButton] {
+  background-color: var(--theme-primary) !important;
+  color: var(--theme-bg) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
 [class*=LoginContainer] {
   background-color: var(--theme-surface) !important;
   border: 1px solid var(--theme-border) !important;
