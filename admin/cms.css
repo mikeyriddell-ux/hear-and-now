@@ -1,111 +1,146 @@
-/* Decap CMS - Ultimate Edge-to-Edge Mobile (v25) */
+/**
+Adapted From Source: https://gist.github.com/searls/7fd2c3223571a58a81006e7da66bd064
+via https://github.com/hithismani/responsive-decap
+*/
 
-@media (max-width: 900px) {
-  /* 1. Global Reset - Remove all grey page margins */
-  html, body, #nc-root {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: white !important; /* Make the whole page white to blend the cards */
-    width: 100% !important;
+@media (max-width: 799px) {
+    /* Bring Any Dropdown To Center Of Page */
+
+    [class*=DropdownList]{
+      position: fixed !important;
+      min-width: 20% !important;
+      width: 90% !important;
+      margin: auto !important;
+      height: fit-content !important;
+      top: auto !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 10px !important;
+      background: #e6f4fd !important;
+      border: 2px solid #3a69c7 !important;
   }
 
-  /* 2. Stack the main areas natively (safely preserving flex) */
-  [class*="AppMainContainer"],
-  [class*="SplitPane"], .SplitPane {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    width: 100% !important;
-  }
+  /* Add Overflow To Modal Window */
+    [class*=StyledModal]{
+        width: 90dvw !important;
+        width: 90% !important;
+    }
+  
+  
 
-  /* 3. Hide Unnecessary Panes (Preview & Resizer) */
-  [class*="SplitPane"] > .Resizer,
-  .Resizer.vertical,
-  [class*="PreviewPaneContainer"]:not([class*="ControlPaneContainer"]),
-  .nc-previewPane-frame,
-  [class*="SplitPane"] > div:last-child {
+    [class*=LibraryTitle]{
     display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    flex: 0 !important;
-    visibility: hidden !important;
-  }
+    }
 
-  /* 4. Let Editor Fill Space but Preserve Display Mode */
-  [class*="SplitPane"] > div:first-child,
-  [class*="EditorContainer"] {
-    width: 100% !important;
-    flex: 1 1 auto !important; 
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
+    [class*=CollectionTopNewButton]{
+      padding: 0px 10px !important;
+      height: auto !important;
+    }
 
-  /* 5. Edge-to-Edge Seamless Collections & Sidebar */
-  [class*="SidebarContainer"],
-  [class*="CollectionMain"] {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: white !important;
-    border-right: none !important;
-  }
+    [class*=LibraryTop]{
+      overflow-x: auto !important;
+      height: fit-content !important;
+      padding-bottom: 10px !important;
+    }
 
-  /* Make the cards lose their floating drop-shadows and margins */
-  [class*="SidebarCard"],
-  [class*="CollectionTop"],
-  [class*="Card"] {
-    border-radius: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border-bottom: 1px solid #eee !important;
-    background-color: white !important;
-    border-left: none !important;
-    border-right: none !important;
-  }
+
+    /* Hide Blog Post Title From Navbar */ 
+    [class*=BackCollection]{
+        display: none !important;
+    }
+
+    /* Add Padding To Control Pane */ 
+    [class*=ControlPaneContainer] {
+      padding: 0px 10px !important;
+    }
+
+    /* Rest As Per: Searl's Code*/
+
+    [class*=BackCollection],
+    [class*=BackStatus] {
+      font-size: .6rem !important;
+    }
   
-  /* Retain internal padding for the text/buttons so they aren't flush with viewport */
-  [class*="SidebarContainer"] > div,
-  [class*="CollectionMain"] > div {
-    padding: 15px !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
+    [class*=AppHeaderContent],
+    [class*=AppMainContainer] {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      min-width: calc(100vw - 24px) !important;
+      max-width: 100vw !important;
+    }
+  
+    [class*=AppHeaderContent] {
+      display: flex !important;
+      justify-content: space-between !important;
+    }
+  
+    [class*=AppHeaderQuickNewButton] {
+      width: 100% !important;
+    }
+  
+    [class*=AppHeaderButton] {
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+  
+    [class*=EditorContainer],
+    [class*=ToolbarContainer] {
+      min-width: initial !important;
+      overflow-x: auto !important;
+    }
+  
+    [class*=ToolbarSubSectionFirst] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    [class*=PublishedToolbarButton] {
+      padding: 0 8px !important;
+    }
+  
+    [class*=PublishedToolbarButton]::after {
+      display: none !important;
+    }
 
-  /* 6. Fix Header & Toolbar Overflow */
-  [class*="AppHeaderContent"],
-  [class*="EditorToolbar"],
-  [class*="ToolbarContainer"] {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    height: auto !important;
-    padding: 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-  }
+    [class*=ToolbarSubSectionFirst] {
+      flex-direction: row !important;
+    }
   
-  [class*="ToolbarContainer"] > div,
-  [class*="EditorToolbar"] > div {
-    flex-wrap: wrap !important;
-    width: 100% !important;
-    justify-content: flex-start !important;
-  }
+    [class*=SearchInput] {
+      margin-top: 5px !important;
+    }
   
-  /* Dropdown Menu (Quick Add / Publish) */
-  [class*=DropdownList] {
-    position: fixed !important;
-    background-color: white !important;
-    border: 1px solid #ddd !important;
-    width: 100% !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    border-radius: 12px 12px 0 0 !important;
-    z-index: 999999 !important;
-    box-shadow: 0 -10px 20px rgba(0,0,0,0.1) !important;
+    [class*=ViewControls] {
+      position: initial !important;
+    }
+  
+    [class*=PreviewPaneContainer-ControlPaneContainer] {
+      padding: 0 !important;
+    }
+  
+    [class*=ControlPaneContainer] {
+      max-width: 100vw !important;
+    }
+  
+  
+    [class*=EditorControlBar] [class*=ToolbarContainer] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    [class*=CollectionContainer] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    [class*=SidebarContainer] {
+      position: initial !important;
+      width: initial !important;
+    }
+  
+    [class*=CollectionMain] {
+      padding-left: 0 !important;
+      margin-top: 20px !important;
+    }
+  
   }
-}
