@@ -18,24 +18,6 @@ media_folder: "public/assets/artists"
 public_folder: "/assets/artists"
 
 collections:
-  - name: "artists"
-    label: "Artists"
-    icon: "people"
-    folder: "src/content/artists"
-    extension: json
-    format: json
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Role", name: "role", widget: "string" }
-      - { label: "Genre", name: "genre", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Bio", name: "bio", widget: "text", pattern: [".{0,150}", "Must be 150 characters or less (about 3 lines)"], hint: "Keep it brief — max 150 characters for clean UI." }
-      - { label: "Enabled", name: "enabled", widget: "boolean", default: true, hint: "Turn off to hide this artist from the live site" }
-      - { label: "Zoom Scale", name: "zoomScale", widget: "string", default: "1.2" }
-      - { label: "Object Position", name: "objectPosition", widget: "string", default: "50% 25%" }
-
   - name: "settings"
     label: "Settings"
     icon: "settings"
@@ -56,6 +38,21 @@ collections:
           - { label: "Site Name", name: "name", widget: "string" }
           - { label: "Footer Tagline", name: "tagline", widget: "text" }
           - { label: "Hero Footer Text", name: "footerText", widget: "string" }
+
+  - name: "upcoming_shows"
+    label: "Upcoming Shows"
+    icon: "schedule"
+    folder: "src/content/upcoming-shows"
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Selector Name", name: "selector", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Time", name: "time", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
+      - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
 
   - name: "broadcasts"
     label: "Latest Shows"
@@ -90,18 +87,20 @@ collections:
       - { label: "CTA Link", name: "ctaLink", widget: "string" }
       - { label: "Enabled", name: "enabled", widget: "boolean", default: true, hint: "Turn off to hide this event from the live site" }
 
-  - name: "upcoming_shows"
-    label: "Upcoming Shows"
-    icon: "schedule"
-    folder: "src/content/upcoming-shows"
+  - name: "artists"
+    label: "Artists"
+    icon: "people"
+    folder: "src/content/artists"
     extension: json
     format: json
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Selector Name", name: "selector", widget: "string" }
-      - { label: "Date", name: "date", widget: "string" }
-      - { label: "Time", name: "time", widget: "string" }
-
-      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
-      - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Genre", name: "genre", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "text", pattern: [".{0,150}", "Must be 150 characters or less (about 3 lines)"], hint: "Keep it brief — max 150 characters for clean UI." }
+      - { label: "Enabled", name: "enabled", widget: "boolean", default: true, hint: "Turn off to hide this artist from the live site" }
+      - { label: "Zoom Scale", name: "zoomScale", widget: "string", default: "1.2" }
+      - { label: "Object Position", name: "objectPosition", widget: "string", default: "50% 25%" }
