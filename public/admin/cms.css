@@ -177,12 +177,18 @@ button {
   border: 1px solid var(--theme-border) !important;
 }
 
-/* 9. Preview Pane - CHAMELEON INVERSION STRATEGY */
-/* This flips a light-themed site preview into a perfect dark mode automatically */
+/* 9. Preview Pane - CHAMELEON INVERSION & LUMINOUS TEXT */
 [class*="SplitPane"] > div:last-child,
 [class*=PreviewPaneContainer] {
-  background-color: #fff !important; /* Force base white before inversion */
-  filter: invert(1) hue-rotate(180deg) brightness(0.9) !important;
+  background-color: #fff !important; 
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) !important; /* Boost brightness */
+}
+
+/* Force Light Text on everything inside preview */
+[class*="SplitPane"] > div:last-child *,
+[class*=PreviewPaneContainer] * {
+  color: #fff !important; /* Force white text */
+  text-shadow: 0 0 1px rgba(0,0,0,0.5) !important; /* Subtle shadow for legibility */
 }
 
 /* Re-invert media so it looks normal */
