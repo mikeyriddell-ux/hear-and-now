@@ -178,14 +178,19 @@ button {
 }
 
 /* 9. Preview Pane - ABSOLUTE OVERRIDE */
-[id="nc-root"] [class*=PreviewPaneContainer] {
+[id="nc-root"] [class*=PreviewPaneContainer],
+[id="nc-root"] [class*=PreviewPaneContainer] * {
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
 }
 
-[id="nc-root"] [class*=PreviewPaneContainer] * {
+[id="nc-root"] [class*=PreviewPaneContainer] h1,
+[id="nc-root"] [class*=PreviewPaneContainer] h2,
+[id="nc-root"] [class*=PreviewPaneContainer] h3,
+[id="nc-root"] [class*=PreviewPaneContainer] p,
+[id="nc-root"] [class*=PreviewPaneContainer] span,
+[id="nc-root"] [class*=PreviewPaneContainer] div {
   color: var(--theme-text) !important;
-  background-color: transparent !important;
 }
 
 /* Fix the Boolean toggle button itself */
