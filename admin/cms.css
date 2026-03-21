@@ -1,4 +1,4 @@
-/* Decap CMS - Elegant Mobile Responsiveness (v21) */
+/* Decap CMS - Refined Minimal Mobile Responsiveness (v22) */
 
 @media (max-width: 900px) {
 
@@ -16,42 +16,32 @@
     border-bottom: 1px solid #dfdfe3 !important;
   }
 
-  /* 2. Stack the Editor and Preview Pane */
-  [class*="SplitPane"], .SplitPane {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    width: 100% !important;
-    overflow: visible !important;
-  }
-
-  /* 3. Hide Preview & Resizer to save space */
-  [class*="SplitPane"] > .Resizer,
-  .Resizer.vertical,
+  /* 2. Hide Preview Pane */
+  /* This targets the actual editor preview safely without corrupting SplitPane rendering */
   [class*="PreviewPaneContainer"],
   [class*="previewPane"],
-  [class*="SplitPane"] > div:last-child {
+  [class*="nc-previewPane-frame"] {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
     visibility: hidden !important;
   }
 
-  /* 4. Let the Editor Pane grow naturally without constrained widths */
-  [class*="SplitPane"] > div:first-child,
+  /* 3. Let the Editor Pane grow */
+  /* Target the editor specifically so it expands to fill the missing preview space */
   [class*="EditorContainer"] {
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
   }
 
-  /* 5. Fix Toolbar Header overlap */
+  /* 4. Fix Toolbar Header overlap */
   [class*="AppHeaderContent"] {
     flex-wrap: wrap !important;
     height: auto !important;
   }
 
-  /* 6. Clean Dropdown Menu */
+  /* 5. Clean Dropdown Menu */
   [class*=DropdownList] {
     position: fixed !important;
     background-color: white !important;
