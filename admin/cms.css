@@ -60,11 +60,29 @@ body,
 }
 
 /* 3. Header & Toolbar */
+[class*=AppHeader],
 [class*=AppHeaderContent],
 [class*=ToolbarContainer] {
   background-color: var(--theme-surface) !important;
   border-bottom: 1px solid var(--theme-border) !important;
   color: var(--theme-text) !important;
+  box-shadow: none !important;
+}
+
+/* 3.1 Dropdowns & Menus */
+[class*=DropdownList],
+[class*=DropdownButton],
+[class*=MenuItem],
+[class*=StyledMenuItem] {
+  background-color: var(--theme-surface-high) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+}
+
+[class*=MenuItem]:hover,
+[class*=StyledMenuItem]:hover {
+  background-color: var(--theme-primary) !important;
+  color: var(--theme-bg) !important;
 }
 
 /* 4. Collection List & Cards */
