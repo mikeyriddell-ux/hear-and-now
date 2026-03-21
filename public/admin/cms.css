@@ -1,11 +1,11 @@
-/* Decap CMS - Ultimate Edge-to-Edge Mobile (v28 - Restored Custom) */
+/* Decap CMS - Theme-Agnostic Edge-to-Edge Mobile (v29) */
 
 @media (max-width: 900px) {
   /* 1. Global Reset - Remove all grey page margins */
   html, body, #nc-root {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: white !important; /* Make the whole page white to blend the cards */
+    background-color: transparent !important; /* Inherit theme background */
     width: 100% !important;
   }
 
@@ -48,7 +48,7 @@
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background-color: white !important;
+    background-color: transparent !important; /* Inherit theme */
     border-right: none !important;
   }
 
@@ -61,8 +61,8 @@
     width: 100% !important;
     max-width: 100% !important;
     box-shadow: none !important;
-    border-bottom: 1px solid #eee !important;
-    background-color: white !important;
+    border-bottom: 1px solid var(--theme-border, rgba(128,128,128,0.2)) !important;
+    background-color: transparent !important; /* Inherit theme */
     border-left: none !important;
     border-right: none !important;
   }
@@ -99,13 +99,13 @@
   /* Dropdown Menu (Quick Add / Publish) */
   [class*=DropdownList] {
     position: fixed !important;
-    background-color: white !important;
-    border: 1px solid #ddd !important;
+    background-color: var(--code-block-bg-color, white) !important; /* Inherit GitHub dark mode var if present */
+    border: 1px solid var(--theme-border, #ddd) !important;
     width: 100% !important;
     left: 0 !important;
     bottom: 0 !important;
     border-radius: 12px 12px 0 0 !important;
     z-index: 999999 !important;
-    box-shadow: 0 -10px 20px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5) !important;
   }
 }
