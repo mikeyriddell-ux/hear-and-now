@@ -166,29 +166,25 @@ button {
 }
 
 /* 8. Widget Specific Polish - NUCLEAR INVERSION (Phase 3) */
-/* This flips the persistent white backgrounds that are injected as inline styles */
-[class*="ControlPaneContainer"],
-[class*="PreviewPaneContainer"],
-[class*="EditorControlPane"],
-[class*="EditorContainer"] {
+/* This flips the entire editor structure (SplitPane) to bypass all light background blocks */
+[class*="SplitPane"] > div,
+[class*="EditorContainer"],
+[class*="EditorControlPane"] {
   background-color: #ffffff !important; 
   filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(0.9) !important;
 }
 
 /* Re-invert media & icons to look natural */
-[class*="ControlPaneContainer"] img,
-[class*="ControlPaneContainer"] video,
-[class*="ControlPaneContainer"] [class*="ControlContainer"] img,
-[class*="ControlPaneContainer"] .material-icons,
-[class*="PreviewPaneContainer"] img,
-[class*="PreviewPaneContainer"] video,
-[class*="PreviewPaneContainer"] iframe {
+[class*="SplitPane"] img,
+[class*="SplitPane"] video,
+[class*="SplitPane"] [class*="ControlContainer"] img,
+[class*="SplitPane"] .material-icons,
+[class*="SplitPane"] iframe {
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
-/* Ensure text inside inverted containers remains high contrast */
-[class*="ControlPaneContainer"] *,
-[class*="PreviewPaneContainer"] * {
+/* Ensure text remains high contrast after inversion */
+[class*="SplitPane"] * {
   text-shadow: 0 0 1px rgba(0,0,0,0.1) !important;
 }
 
