@@ -174,12 +174,16 @@ button {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(0.9) !important;
 }
 
-/* Re-invert media & icons to look natural */
+/* Re-invert media, icons, AND specific widget containers that became light due to parent inversion */
 [class*="SplitPane"] img,
 [class*="SplitPane"] video,
 [class*="SplitPane"] [class*="ControlContainer"] img,
 [class*="SplitPane"] .material-icons,
-[class*="SplitPane"] iframe {
+[class*="SplitPane"] iframe,
+[class*="SplitPane"] [class*="ControlContainer"], 
+[class*="SplitPane"] [class*="ToggleContainer"],
+[class*="SplitPane"] [class*="FileWidget"]
+{
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
@@ -190,5 +194,5 @@ button {
 
 /* Specific fix for the Boolean toggle button after inversion */
 [class*=ToggleContainer] span {
-  filter: invert(1) hue-rotate(180deg) !important;
+  filter: none !important; /* Reset to parent's re-inverted state */
 }
