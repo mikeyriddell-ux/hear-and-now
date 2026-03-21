@@ -1,4 +1,4 @@
-/* Decap CMS - Ultimate Edge-to-Edge Mobile (v23) */
+/* Decap CMS - Ultimate Edge-to-Edge Mobile (v24) */
 
 @media (max-width: 900px) {
   /* 1. Global Reset - Remove all grey page margins */
@@ -19,10 +19,12 @@
   }
 
   /* 3. Hide Unnecessary Panes (Preview & Resizer) */
+  /* CRITICAL FIX: The parent div contains BOTH PreviewPaneContainer and ControlPaneContainer classes! */
+  /* We MUST use :not() so we don't accidentally hide the entire editor! */
   [class*="SplitPane"] > .Resizer,
   .Resizer.vertical,
-  [class*="PreviewPaneContainer"],
-  [class*="previewPane"],
+  [class*="PreviewPaneContainer"]:not([class*="ControlPaneContainer"]),
+  .nc-previewPane-frame,
   [class*="SplitPane"] > div:last-child {
     display: none !important;
     width: 0 !important;
