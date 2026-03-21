@@ -6,58 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <title>Content Manager | Hear & Now</title>
+    
+    <!-- 1. Priority Session Restore (Blocks UI rendering) -->
+    <script>
+        (function() {
+            const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce', 'site_id'];
+            document.cookie.split(';').forEach(cookie => {
+                const [m, v] = cookie.trim().split('=');
+                if (PREFIXES.some(p => m.startsWith(p)) && !localStorage.getItem(m)) {
+                    localStorage.setItem(m, decodeURIComponent(v));
+                }
+            });
+        })();
+    </script>
+
     <link href="config.yml" type="text/yaml" rel="cms-config-url">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&family=Playfair+Display:ital,wght@1,700&display=swap');
-
-        :root {
-            --obsidian: #0D0D12;
-            --champagne: #C9A84C;
-            --ivory: #FAF8F5;
-            --slate: #2A2A35;
+        
+        :root { --obsidian: #0D0D12; }
+        body { background-color: var(--obsidian); margin: 0; font-family: 'Inter', sans-serif; }
+        
+        /* Flicker Killer Overlay */
+        #flicker-killer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--obsidian); z-index: 999999;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        body {
-            background-color: var(--obsidian);
-            margin: 0;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-    <style>
-        /* Eliminate Login Flicker on Refresh */
-        #nc-root:empty { display: none !important; }
-        body.restoring #nc-root { opacity: 0; pointer-events: none; }
+        #flicker-killer.fade-out { opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     </style>
     <link rel="stylesheet" href="cms.css" />
 </head>
 
-<body class="restoring">
+<body>
+    <div id="flicker-killer"></div>
     <!-- Scripts for animations -->
-    <!-- Stable CMS Session Persistence (Backup/Restore Only) -->
+    <!-- Stable CMS Session Persistence (Backup Only) -->
     <script>
         (function() {
             const PREFIXES = ['decap-cms', 'netlify-cms', 'gotrue', 'pkce', 'site_id'];
             
-            // 1. Synchronous Restore from Cookies
-            document.cookie.split(';').forEach(cookie => {
-                const [name, value] = cookie.trim().split('=');
-                if (PREFIXES.some(p => name.startsWith(p))) {
-                    try {
-                        const decodedValue = decodeURIComponent(value);
-                        if (!localStorage.getItem(name)) {
-                            localStorage.setItem(name, decodedValue);
-                        }
-                    } catch (e) {}
-                }
-            });
-
-            // 2. Remove hider after a tiny delay
+            // Remove flicker killer after CMS has had a chance to pick up the restored tokens
             setTimeout(() => {
-                document.body.classList.remove('restoring');
-            }, 150);
+                const killer = document.getElementById('flicker-killer');
+                if (killer) killer.classList.add('fade-out');
+            }, 300);
 
-            // 2. Backup to Cookies
+            // Backup to Cookies periodically
             function backup() {
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
