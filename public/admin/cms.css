@@ -1,27 +1,54 @@
-/* Decap CMS - Mobile Responsiveness & Layout Refinements */
+/* Decap CMS - Mobile Responsiveness (Shotgun Edition) */
 
 @media (max-width: 799px) {
-  /* Fix dropdown positioning on small screens */
-  [class*=DropdownList]{
+  /* 1. Hide the Preview Pane and all its variants */
+  [class*="PreviewPaneContainer"],
+  [class*="previewPane"],
+  [class*="SplitPane"] > div:last-child,
+  .nc-previewPane-frame,
+  .nc-entryEditor-preview {
+    display: none !important;
+    width: 0 !important;
+    flex: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* 2. Full Width Editor and its parents */
+  [class*="EditorContainer"],
+  [class*="ControlPaneContainer"],
+  [class*="SplitPane"] > div:first-child,
+  .nc-entryEditor-controlPane {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+    background-color: white !important;
+  }
+
+  /* 3. Stacking Sidebar */
+  [class*="SidebarContainer"],
+  .nc-app-sidebar {
+    position: relative !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  /* 4. Dropdown Polish */
+  [class*=DropdownList] {
     position: fixed !important;
     background-color: white !important;
     border: 1px solid #ddd !important;
-    width: 90% !important;
-    left: 5% !important;
+    width: 94% !important;
+    left: 3% !important;
     bottom: 10px !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    z-index: 10000 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
   }
-
-  /* Hide preview pane on mobile to focus on editor */
-  [class*=PreviewPaneContainer] {
+  
+  /* 5. Hide the vertical resizer */
+  .Resizer.vertical {
     display: none !important;
-  }
-
-  /* Full-width sidebar for easier navigation */
-  [class*=SidebarContainer] {
-    position: initial !important;
-    width: 100% !important;
-    border-right: none !important;
-    border-bottom: 1px solid #ddd !important;
   }
 }
