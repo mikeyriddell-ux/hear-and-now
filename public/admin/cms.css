@@ -177,25 +177,21 @@ button {
   border: 1px solid var(--theme-border) !important;
 }
 
-/* 9. Preview Pane - SPLITPANE OVERRIDE */
-[class*="SplitPane"] > div:last-child {
-  background-color: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
+/* 9. Preview Pane - CHAMELEON INVERSION STRATEGY */
+/* This flips a light-themed site preview into a perfect dark mode automatically */
+[class*="SplitPane"] > div:last-child,
+[class*=PreviewPaneContainer] {
+  background-color: #fff !important; /* Force base white before inversion */
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) !important;
 }
 
-[class*="SplitPane"] > div:last-child * {
-  color: var(--theme-text) !important;
-  background-color: transparent !important;
-}
-
-/* Specific text elements for ultimate contrast */
-[class*="SplitPane"] > div:last-child h1,
-[class*="SplitPane"] > div:last-child h2,
-[class*="SplitPane"] > div:last-child h3,
-[class*="SplitPane"] > div:last-child p,
-[class*="SplitPane"] > div:last-child span,
-[class*="SplitPane"] > div:last-child div {
-  color: var(--theme-text) !important;
+/* Re-invert media so it looks normal */
+[class*="SplitPane"] > div:last-child img,
+[class*="SplitPane"] > div:last-child video,
+[class*="SplitPane"] > div:last-child [style*="background-image"],
+[class*=PreviewPaneContainer] img,
+[class*=PreviewPaneContainer] video {
+  filter: invert(1) hue-rotate(180deg) !important;
 }
 
 /* Fix the Boolean toggle button itself */
