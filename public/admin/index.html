@@ -59,6 +59,23 @@
                 }
             }
             setInterval(backup, 2000);
+
+            // 3. Forgot Password Link Injection
+            const observer = new MutationObserver((mutations) => {
+                const loginButton = document.querySelector('button[class*="LoginButton"]');
+                if (loginButton && !document.querySelector('#forgot-password-link')) {
+                    const link = document.createElement('a');
+                    link.id = 'forgot-password-link';
+                    link.href = 'https://auth.decapbridge.com/reset';
+                    link.target = '_blank';
+                    link.innerText = 'Forgot password?';
+                    link.style = 'display: block; margin-top: 15px; color: #666; font-size: 13px; text-decoration: none; text-align: center;';
+                    link.onmouseover = () => link.style.textDecoration = 'underline';
+                    link.onmouseout = () => link.style.textDecoration = 'none';
+                    loginButton.parentNode.insertBefore(link, loginButton.nextSibling);
+                }
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
         })();
     </script>
     <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
