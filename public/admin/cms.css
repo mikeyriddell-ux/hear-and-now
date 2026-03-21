@@ -1,203 +1,27 @@
-/* Decap CMS 3.0 Custom Dark Mode (GitHub Snippet Inspired) */
+/* Decap CMS - Mobile Responsiveness & Layout Refinements */
 
-:root {
-  /* Colors from GitHub snippet */
-  --theme-bg: #0A0A0E;
-  --theme-surface: #121217;
-  --theme-surface-high: #1A1A21;
-  --theme-border: #2D2D38;
-  --theme-text: #F0F0F2;
-  --theme-text-dim: #8E8E93;
-  --theme-primary: #40E0D0; /* Turquoise */
-  --theme-danger: #ff4d4d;
-}
-
-/* 1. Global Backgrounds */
-body, 
-#nc-root,
-[class*=LoginPage],
-[class*=AppMainContainer],
-[class*=CollectionMain],
-[class*=EditorContainer] {
-  background-color: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
-}
-
-/* 1.1 Login Logo & Button Polish */
-[class*=LoginPage] img {
-  filter: invert(1) brightness(2) !important; /* Make black logo white */
-}
-
-[class*=LoginButton] {
-  background-color: var(--theme-primary) !important;
-  color: var(--theme-bg) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
-
-[class*=LoginContainer] {
-  background-color: var(--theme-surface) !important;
-  border: 1px solid var(--theme-border) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
-}
-
-/* 2. Sidebar & Navigation */
-[class*=SidebarContainer],
-[class*=SidebarCard] {
-  background-color: var(--theme-surface) !important;
-  border-right: 1px solid var(--theme-border) !important;
-}
-
-[class*=SidebarNavLink] {
-  color: var(--theme-text-dim) !important;
-}
-
-[class*=SidebarNavLink]:hover,
-[class*=SidebarNavLink][class*=active] {
-  color: var(--theme-primary) !important;
-  background-color: var(--theme-surface-high) !important;
-}
-
-/* 3. Header & Toolbar */
-[class*=AppHeader],
-[class*=AppHeaderContent],
-[class*=ToolbarContainer] {
-  background-color: var(--theme-surface) !important;
-  border-bottom: 1px solid var(--theme-border) !important;
-  color: var(--theme-text) !important;
-  box-shadow: none !important;
-}
-
-/* 3.1 Dropdowns & Menus */
-[class*=DropdownList],
-[class*=DropdownButton],
-[class*=MenuItem],
-[class*=StyledMenuItem] {
-  background-color: var(--theme-surface-high) !important;
-  color: var(--theme-text) !important;
-  border-color: var(--theme-border) !important;
-}
-
-[class*=MenuItem]:hover,
-[class*=StyledMenuItem]:hover {
-  background-color: var(--theme-primary) !important;
-  color: var(--theme-bg) !important;
-}
-
-/* 4. Collection List & Cards */
-[class*=Card],
-[class*=Table],
-[class*=CollectionTop] {
-  background-color: var(--theme-surface) !important;
-  border: 1px solid var(--theme-border) !important;
-  color: var(--theme-text) !important;
-}
-
-[class*=CollectionTopNewButton] {
-  background-color: var(--theme-primary) !important;
-  color: var(--theme-bg) !important;
-}
-
-/* 5. Editor Pane & Inputs */
-[class*=ControlPaneContainer] {
-  background-color: var(--theme-surface) !important;
-  border: 1px solid var(--theme-border) !important;
-  border-radius: 8px !important;
-  padding: 20px !important;
-  margin-bottom: 20px !important;
-}
-
-[class*=FieldLabel] {
-  color: var(--theme-primary) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  font-size: 11px !important;
-  letter-spacing: 0.05em !important;
-}
-
-input, textarea, select, [class*=Input] {
-  background-color: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
-  border: 1px solid var(--theme-border) !important;
-  border-radius: 4px !important;
-}
-
-/* 6. Material Icons Integration */
-.material-icons {
-  color: inherit !important;
-}
-
-[class*=SidebarNavLink] .material-icons {
-  margin-right: 10px !important;
-}
-
-/* 7. Buttons & Actions */
-button {
-  border-radius: 4px !important;
-}
-
-[class*=PublishedToolbarButton] {
-  background-color: var(--theme-primary) !important;
-  color: var(--theme-bg) !important;
-}
-
-/* Preserved Mobile Responsiveness (Updated for Dark Mode) */
 @media (max-width: 799px) {
+  /* Fix dropdown positioning on small screens */
   [class*=DropdownList]{
     position: fixed !important;
-    background-color: var(--theme-surface-high) !important;
-    border: 1px solid var(--theme-border) !important;
+    background-color: white !important;
+    border: 1px solid #ddd !important;
     width: 90% !important;
     left: 5% !important;
     bottom: 10px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
   }
 
+  /* Hide preview pane on mobile to focus on editor */
   [class*=PreviewPaneContainer] {
     display: none !important;
   }
 
+  /* Full-width sidebar for easier navigation */
   [class*=SidebarContainer] {
     position: initial !important;
     width: 100% !important;
     border-right: none !important;
-    border-bottom: 1px solid var(--theme-border) !important;
+    border-bottom: 1px solid #ddd !important;
   }
-}
-
-/* 8. Widget Specific Polish - NUCLEAR INVERSION (Phase 3) */
-/* This flips the entire editor structure (SplitPane) to bypass all light background blocks */
-[class*="SplitPane"] > div,
-[class*="EditorContainer"],
-[class*="EditorControlPane"] {
-  background-color: #ffffff !important; 
-  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(0.9) !important;
-}
-
-/* Re-invert media, icons, AND specific widget containers that became light due to parent inversion */
-[class*="SplitPane"] img,
-[class*="SplitPane"] video,
-[class*="SplitPane"] .material-icons,
-[class*="SplitPane"] iframe,
-[class*="SplitPane"] [class*="ControlContainer"], 
-[class*="SplitPane"] [class*="ToggleContainer"],
-[class*="SplitPane"] [class*="FileWidget"]
-{
-  filter: invert(1) hue-rotate(180deg) !important;
-}
-
-/* Prevent double-inversion for images nested inside re-inverted containers */
-[class*="ControlContainer"] img,
-[class*="FileWidget"] img {
-  filter: none !important;
-}
-
-/* Ensure text remains high contrast after inversion */
-[class*="SplitPane"] * {
-  text-shadow: 0 0 1px rgba(0,0,0,0.1) !important;
-}
-
-/* Specific fix for the Boolean toggle button after inversion */
-[class*=ToggleContainer] span {
-  filter: none !important; /* Reset to parent's re-inverted state */
 }
