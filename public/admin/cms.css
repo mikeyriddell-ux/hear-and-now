@@ -1,11 +1,11 @@
-/* Decap CMS - Theme-Agnostic Edge-to-Edge Mobile (v29) */
+/* Decap CMS - Theme-Agnostic Edge-to-Edge Mobile (v30) */
 
 @media (max-width: 900px) {
   /* 1. Global Reset - Remove all grey page margins */
   html, body, #nc-root {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: transparent !important; /* Inherit theme background */
+    background-color: var(--body-bg-color, transparent) !important; /* Inherit GitHub Theme */
     width: 100% !important;
   }
 
@@ -43,12 +43,14 @@
   /* 5. Edge-to-Edge Seamless Collections & Sidebar */
   [class*="SidebarContainer"],
   [class*="CollectionMain"] {
+    position: relative !important; /* Fix overlapping by removing absolute positioning */
     display: block !important;
+    height: auto !important; /* Ensure containers expand to fit children */
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background-color: transparent !important; /* Inherit theme */
+    background-color: var(--body-bg-color, transparent) !important;
     border-right: none !important;
   }
 
@@ -56,13 +58,14 @@
   [class*="SidebarCard"],
   [class*="CollectionTop"],
   [class*="Card"] {
+    position: relative !important;
     border-radius: 0 !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     box-shadow: none !important;
     border-bottom: 1px solid var(--theme-border, rgba(128,128,128,0.2)) !important;
-    background-color: transparent !important; /* Inherit theme */
+    background-color: transparent !important;
     border-left: none !important;
     border-right: none !important;
   }
@@ -70,6 +73,7 @@
   /* Retain internal padding for the text/buttons so they aren't flush with viewport */
   [class*="SidebarContainer"] > div,
   [class*="CollectionMain"] > div {
+    position: relative !important;
     padding: 15px !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -99,8 +103,8 @@
   /* Dropdown Menu (Quick Add / Publish) */
   [class*=DropdownList] {
     position: fixed !important;
-    background-color: var(--code-block-bg-color, white) !important; /* Inherit GitHub dark mode var if present */
-    border: 1px solid var(--theme-border, #ddd) !important;
+    background-color: var(--code-block-bg-color, #1a1a1a) !important;
+    border: 1px solid var(--theme-border, #333) !important;
     width: 100% !important;
     left: 0 !important;
     bottom: 0 !important;
