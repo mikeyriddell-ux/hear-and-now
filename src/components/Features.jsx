@@ -45,7 +45,7 @@ export default function Features() {
                     <h2 className="font-sans font-bold text-4xl md:text-5xl text-background mb-4">Latest Shows</h2>
                     <p className="font-mono text-sm text-background/60 flex items-center gap-2">
                         <Circle size={8} className="text-accent animate-pulse" fill="currentColor" />
-                        Live recordings from Forestry Transmission
+                        Live recordings from Hear & Now selectors
                     </p>
                 </div>
             </div>
