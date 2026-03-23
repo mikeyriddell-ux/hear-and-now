@@ -82,9 +82,9 @@ export default function UpcomingShows() {
                                     <Clock size={12} />
                                     {show.time}
                                 </div>
-                                {artistMatch && artistMatch.genre && (
+                                {(artistMatch?.genre || show.genre) && (
                                     <div className="flex items-center gap-2 text-accent font-mono text-[10px] md:text-xs uppercase tracking-widest pl-3 whitespace-nowrap">
-                                        {artistMatch.genre}
+                                        {artistMatch?.genre || show.genre}
                                     </div>
                                 )}
                             </div>
