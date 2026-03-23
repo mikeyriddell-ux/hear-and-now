@@ -63,10 +63,10 @@ export default function UpcomingShows() {
                         key={idx}
                         className="upcoming-card bg-background/5 border border-primary/20 rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-500 shadow-xl flex"
                     >
-                        {artistMatch?.image && (
+                        {(artistMatch?.image || show.image) && (
                             <div className="w-1/3 min-w-[140px] md:min-w-[200px] lg:min-w-[160px] aspect-square flex-shrink-0">
                                 <img
-                                    src={resolveImagePath(artistMatch.image)}
+                                    src={resolveImagePath(artistMatch?.image || show.image)}
                                     alt={show.selector}
                                     className="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                                 />
@@ -91,9 +91,9 @@ export default function UpcomingShows() {
                             <h3 className="font-sans text-2xl md:text-3xl font-bold text-background group-hover:text-accent transition-colors mb-2">
                                 {show.selector}
                             </h3>
-                            {artistMatch && artistMatch.bio && (
+                            {(artistMatch?.bio || show.description) && (
                                 <p className="font-sans text-sm md:text-base text-background/60 line-clamp-2 md:line-clamp-3">
-                                    {artistMatch.bio}
+                                    {artistMatch?.bio || show.description}
                                 </p>
                             )}
                         </div>
