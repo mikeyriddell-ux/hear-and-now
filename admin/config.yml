@@ -51,6 +51,8 @@ collections:
       - { label: "Selector Name", name: "selector", widget: "string" }
       - { label: "Date", name: "date", widget: "string" }
       - { label: "Time", name: "time", widget: "string" }
+      - { label: "Fallback Description", name: "description", widget: "text", required: false, hint: "Used if the selector is not in Artists" }
+      - { label: "Fallback Image", name: "image", widget: "image", required: false, hint: "Used if the selector is not in Artists" }
       - { label: "Order", name: "order", widget: "number", value_type: "int", default: 10 }
       - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
 
