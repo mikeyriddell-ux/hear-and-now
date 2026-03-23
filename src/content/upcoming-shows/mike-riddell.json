@@ -3,5 +3,6 @@
   "date": "Friday 27th March",
   "time": "8pm - midnight",
   "order": 1,
-  "enabled": true
+  "enabled": true,
+  "description": "Deep crates, local selectors, and global sounds."
 }
