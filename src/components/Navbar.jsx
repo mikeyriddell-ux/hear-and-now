@@ -21,18 +21,18 @@ export default function Navbar({ isLive }) {
         });
     };
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            ScrollTrigger.create({
-                start: 'top -50',
-                end: 99999,
-                toggleClass: {
-                    className: 'scrolled-nav',
-                    targets: containerRef.current,
-                },
-            });
-        }, containerRef);
-        return () => ctx.revert();
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                containerRef.current?.classList.add('scrolled-nav');
+            } else {
+                containerRef.current?.classList.remove('scrolled-nav');
+            }
+        };
+        
+        handleScroll(); // Initial check
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     useLayoutEffect(() => {
@@ -65,9 +65,9 @@ export default function Navbar({ isLive }) {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <div ref={containerRef} className="fixed top-6 md:top-8 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
-            {/* Logo positioned top-left outside the navbar, using NYC subway CSS typography */}
-            <div className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-8 md:left-16 pointer-events-auto flex items-center">
+        <div ref={containerRef} className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-8 py-6 md:py-8 pointer-events-none transition-all duration-500">
+            {/* Logo */}
+            <div className="pointer-events-auto flex items-center">
                 <a href="#" onClick={scrollToTop} className="block group px-4 py-2 -ml-4 rounded-[12px] transition-all duration-500 [.scrolled-nav_&]:bg-black [.scrolled-nav_&]:shadow-2xl">
                     <h1 className="font-subway text-4xl md:text-5xl lg:text-[4.5rem] text-white leading-none tracking-tight uppercase group-hover:scale-[1.02] transition-transform duration-500 origin-top-left drop-shadow-xl"><span className="glass-logo">
                         {siteConfig.name}</span>
@@ -75,7 +75,7 @@ export default function Navbar({ isLive }) {
                 </a>
             </div>
 
-            {/* Desktop Nav - Pill shape, right-aligned content */}
+            {/* Desktop Nav - Pill shape, centered or right-aligned relative to remaining space */}
             <nav
                 ref={navRef}
                 className="
@@ -85,7 +85,7 @@ export default function Navbar({ isLive }) {
           transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
           bg-transparent text-background border border-transparent
           [.scrolled-nav_&]:bg-background/80 [.scrolled-nav_&]:backdrop-blur-xl [.scrolled-nav_&]:text-primary [.scrolled-nav_&]:border-primary/10 [.scrolled-nav_&]:shadow-2xl
-          w-auto max-w-5xl ml-auto mr-8 gap-8 md:gap-12
+          w-auto gap-8 md:gap-12 ml-auto
         "
             >
                 {/* Desktop Nav Links */}
@@ -111,7 +111,7 @@ export default function Navbar({ isLive }) {
             {/* Top Right Actions: Burger (Mobile Only now) */}
             <div
                 ref={rightActionsRef}
-                className="absolute top-6 md:top-1/2 md:-translate-y-1/2 right-8 pointer-events-auto flex items-center md:hidden transition-all duration-500 [.scrolled-nav_&]:text-primary"
+                className="pointer-events-auto flex items-center md:hidden transition-all duration-500 [.scrolled-nav_&]:text-primary"
             >
                 <button
                     onClick={toggleMenu}

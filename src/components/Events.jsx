@@ -100,6 +100,11 @@ export default function Events() {
                                         <Clock size={14} />
                                         <span>{event.time}</span>
                                     </div>
+                                    {event.genre && (
+                                        <div className="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest border-l border-white/10 pl-4">
+                                            <span>{event.genre}</span>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <h3 className="font-sans text-4xl md:text-6xl font-bold text-white mb-6 group-hover:text-accent transition-colors duration-500">

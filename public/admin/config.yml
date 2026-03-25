@@ -85,6 +85,7 @@ collections:
       - { label: "Location", name: "location", widget: "string", hint: "Full address" }
       - { label: "Venue", name: "venue", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
+      - { label: "Genre", name: "genre", widget: "string", required: false, hint: "Musical style or theme" }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "CTA Label", name: "cta", widget: "string", default: "Sign Up" }
       - { label: "CTA Link", name: "ctaLink", widget: "string" }
